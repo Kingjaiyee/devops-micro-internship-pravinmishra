@@ -13,11 +13,11 @@
 
 | | |
 |---|---|
-| **Name** | Anjana Muthunayake |
-| **LinkedIn** | [anjana-muthunayake](https://www.linkedin.com/in/anjana-muthunayake/) |
-| **Location** | Sri Lanka |
-| **Background** | Cloud, DevOps & AI Consultant |
-| **Goal** | MAking positive impact in students |
+| **Name** | Victor Durojaiye |
+| **LinkedIn** | [victor-jaiye](https://www.linkedin.com/in/victor-jaiye/) |
+| **Location** | Nigeria |
+| **Background** | Cloud Engineer |
+| **Goal** | Be a World Class DevOps Engineer |
 
 ---
 
@@ -131,8 +131,8 @@ Week 01 → Success Mindset
 
 | Week | Topic | Status | Assignment | LinkedIn Post | Blog Post |
 |------|-------|--------|------------|---------------|-----------|
-| 00 | Internet & Networking Basics | ⬜ Not Started | ⏳ Pending | — | — |
-| 01 | Success Mindset | ✅ Completed | ✅ Completed |https://www.linkedin.com/posts/anjana-muthunayake_iam-roles-explained-with-thors-hammer-ugcPost-7345150630405054464-DyHV/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADfZ4q8BKp1Dptghjo7ucKUr-n4bgkwr7Kg| https://anjana-muthuanayake.medium.com/half-ready-pods-how-kubernetes-readiness-probes-save-you-f63f755dd959?sharedUserId=anjana-muthuanayake |
+| 00 | Internet & Networking Basics | ✅ Completed | ✅ Completed | https://www.linkedin.com/posts/victor-jaiye_devops-micro-internship-dmi-by-pravin-share-7474201238470025217-RRAE/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE | — |
+| 01 | Success Mindset | ✅ Completed | ✅ Completed | https://www.linkedin.com/posts/victor-jaiye_there-was-a-season-when-i-was-hungry-for-activity-7478193278081802240-kY68?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE | https://www.linkedin.com/pulse/man-who-rebuilt-his-hunger-victor-durojaiye-20-victor-durojaiye-osmje/ |
 | 02 | Agentic AI with Claude Code | ⬜ Not Started | ⏳ Pending | — | — |
 | 03 | Linux for DevOps | ⬜ Not Started | ⏳ Pending | — | — |
 | 04 | Bash Scripting | ⬜ Not Started | ⏳ Pending | — | — |
