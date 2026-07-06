@@ -34,8 +34,6 @@ On real engineering teams, every new team member reads the onboarding doc before
 
 ## 5. Important Instructions (Global Rules)
 
-Follow the Assignment Submission Guidelines — Click here
-
 **Key Rules:**
 - Full name must be visible in required screenshots
 - Do not expose sensitive information (keys, passwords, account IDs)
@@ -154,6 +152,43 @@ Add a React component to the homepage.
 
 ---
 
+### Task 5 — Commit and push your changes to your fork in GitHub
+
+**Goal:** Commit the `CLAUDE.md` file and push it to your GitHub fork so the project instructions are version-controlled.
+
+**Steps:**
+
+1. Check the Git status to verify that `CLAUDE.md` has been created or modified
+
+2. Stage the changes (`git add .`)
+
+3. Commit the changes with a meaningful commit message
+
+4. Push the commit to your GitHub fork
+
+5. Open your GitHub repository in the browser and verify that `CLAUDE.md` is visible in the repository root
+
+
+**Commands (Terminal):**
+
+```bash
+
+git status
+git add CLAUDE.md
+git commit -m "Add project-specific CLAUDE.md"
+git push origin main
+
+```
+
+**Expected Output:** The `CLAUDE.md` file is committed, pushed to your GitHub fork, and visible in the repository.
+
+
+**Screenshots Required:**
+
+- Screenshot 6 — `CLAUDE.md` visible in your GitHub repository after pushing the commit
+
+---
+
 ## 8. Industry Insight
 
 The CLAUDE.md is where the engineer's knowledge becomes permanent. Every line you write there is an instruction that applies to every session, every command, every file Claude touches — automatically. Senior engineers on agentic teams treat their CLAUDE.md like production code: they version control it, review changes to it, and keep it updated as the project evolves. A 90-line CLAUDE.md written carefully can save weeks of correction across a year of usage.
@@ -165,15 +200,14 @@ The CLAUDE.md is where the engineer's knowledge becomes permanent. Every line yo
 Complete all tasks in sequence.
 
 Your submission must include:
-- All 5 required screenshots
-- Your GitHub repo URL (CLAUDE.md should be committed)
+- All 6 required screenshots
+- Your GitHub repo URL (`CLAUDE.md` must be committed and pushed)
 
 ---
 
 ## 10. Solution Walkthrough
 
-A step-by-step solution and troubleshooting guide is available for reference:
-Full solution walkthrough → (LINK)
+A step-by-step solution and troubleshooting guide is available for reference.
 
 ---
 
@@ -183,15 +217,17 @@ Not required for this assignment.
 
 ---
 
-## 12. Completion Checklist
+### 12. Completion Checklist
 
 Before submission, verify:
-- [ ] Screenshot 1 shows a generic Claude response (no CLAUDE.md)
-- [ ] Screenshot 2 shows the auto-generated `/init` output
-- [ ] Screenshot 3 shows all 5 sections in your customized CLAUDE.md
-- [ ] Screenshot 4 shows Claude mentioning S3, CloudFront, and Terraform
-- [ ] Screenshot 5 shows Claude refusing the React request
-- [ ] CLAUDE.md is committed and visible in your GitHub repo
+
+[ ] Screenshot 1 shows a generic Claude response (no CLAUDE.md)<br>
+[ ] Screenshot 2 shows the auto-generated `/init` output <br>
+[ ] Screenshot 3 shows all 5 sections in your customized CLAUDE.md <br>
+[ ] Screenshot 4 shows Claude mentioning S3, CloudFront, and Terraform <br>
+[ ] Screenshot 5 shows Claude refusing the React request <br>
+[ ] Screenshot 6 shows `CLAUDE.md` committed and visible in your GitHub repository <br>
+[ ] GitHub repository URL is included in the submission <br>
 
 ---
 
