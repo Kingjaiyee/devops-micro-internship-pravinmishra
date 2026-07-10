@@ -132,7 +132,7 @@ Week 01 → Success Mindset
 | Week | Topic | Status | Assignment | LinkedIn Post | Blog Post |
 |------|-------|--------|------------|---------------|-----------|
 | 00 | Internet & Networking Basics | ✅ Completed | ✅ Completed | https://www.linkedin.com/posts/victor-jaiye_devops-micro-internship-dmi-by-pravin-share-7474201238470025217-RRAE/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE | — |
-| 01 | Success Mindset | ✅ Completed | ✅ Completed | https://www.linkedin.com/posts/victor-jaiye_there-was-a-season-when-i-was-hungry-for-activity-7478193278081802240-kY68?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE | https://www.linkedin.com/pulse/man-who-rebuilt-his-hunger-victor-durojaiye-20-victor-durojaiye-osmje/ |
+| 01 | Success Mindset | ✅ Completed | ✅ Completed | https://www.linkedin.com/posts/victor-jaiye_there-was-a-season-when-i-was-hungry-for-activity-7478193278081802240-kY68?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE| https://www.linkedin.com/pulse/man-who-rebuilt-his-hunger-victor-durojaiye-20-victor-durojaiye-osmje/ |
 | 02 | Agentic AI with Claude Code | ⬜ Not Started | ⏳ Pending | — | — |
 | 03 | Linux for DevOps | ⬜ Not Started | ⏳ Pending | — | — |
 | 04 | Bash Scripting | ⬜ Not Started | ⏳ Pending | — | — |
