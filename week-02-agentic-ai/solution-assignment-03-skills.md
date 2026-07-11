@@ -96,7 +96,7 @@ Paste your forked repository URL here:
 
 Paste your LinkedIn post URL here:
 
-`__________________________`
+`https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-agenticai-claudecode-ugcPost-7481589577506332672-Xv6l/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE`
 
 ---
 
