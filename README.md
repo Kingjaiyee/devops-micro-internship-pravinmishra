@@ -77,7 +77,7 @@ This is not a course. It is an internship-style program — real deployments, re
 [![Week 02 – Agentic AI](./badges/week-02.svg)](./week-02-agentic-ai/)
 
 <!-- Week 03 → Linux & Bash for DevOps -->
-<!-- [![Week 03 – Linux & Bash](./badges/week-03.svg)](./week-03-linux-and-bash-for-devops/) -->
+[![Week 03 – Linux & Bash](./badges/week-03.svg)](./week-03-linux-and-bash-for-devops/)
 
 <!-- Week 04 → Git & GitHub -->
 <!-- [![Week 04 – Git](./badges/week-04.svg)](./week-04-github/) -->
@@ -130,10 +130,10 @@ This is not a course. It is an internship-style program — real deployments, re
 
 | Week | Topic | Status | Assignment | LinkedIn Post | Blog Post |
 |------|-------|--------|------------|---------------|-----------|
-| 00 | Internet & Networking Basics | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-micro-internship-dmi-by-pravin-share-7474201238470025217-RRAE/) | — |
+| 00 | Internet & Networking Basics | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-micro-internship-dmi-by-pravin-share-7474201238470025217-RRAE/) |[Blog Post](https://dev.to/victor_durojaiye_5fe2257f/how-a-bookstore-in-finland-reaches-the-whole-world-3k8h)|
 | 01 | Success Mindset | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_there-was-a-season-when-i-was-hungry-for-activity-7478193278081802240-kY68) | [Blog Post](https://www.linkedin.com/pulse/man-who-rebuilt-his-hunger-victor-durojaiye-20-victor-durojaiye-osmje/) |
 | 02 | Agentic AI with Claude Code | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-agenticai-claudecode-ugcPost-7481589577506332672-Xv6l/) | [Blog Post](https://www.linkedin.com/pulse/reflection-week-2-victor-durojaiye-victor-durojaiye-rrste/) |
-| 03 | Linux & Bash for DevOps | 🔄 In Progress | ⏳ Pending | — | — |
+| 03 | Linux & Bash for DevOps | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_completing-week-3-of-the-devops-micro-internship-activity-7484170717459189761-9Oxe) | [Blog Post](https://www.linkedin.com/pulse/teaching-ai-diagnose-act-victor-durojaiye-xanfe) |
 | 04 | Git & GitHub | ⬜ Not Started | ⏳ Pending | — | — |
 | 05 | DevOps Lifecycle & Agile | ⬜ Not Started | ⏳ Pending | — | — |
 | 06 | AWS Cloud | ⬜ Not Started | ⏳ Pending | — | — |

@@ -20,7 +20,7 @@ Verify the Ubuntu VM and Nginx are ready for deployment.
 
 #### Screenshot 0 — Output of `sudo systemctl status nginx --no-pager` showing Active (running)
 
-Add your screenshot here.
+![Nginx service status showing active running](screenshots/task0-nginx-status.png)
 
 ---
 
@@ -34,7 +34,7 @@ Download and extract the portfolio website template.
 
 #### Screenshot 1 — Output of `ls -la` showing the extracted project folder
 
-Add your screenshot here.
+![ls -la showing the extracted portfolio project folder](screenshots/task1-ls-extracted.png)
 
 ---
 
@@ -48,7 +48,7 @@ Update the website footer with your deployment details.
 
 #### Screenshot 2 — Nano editor open with the updated footer showing your Full Name, Group, Week, and Date
 
-Add your screenshot here.
+![Nano editor showing footer updated with Victor Durojaiye deployment details](screenshots/task2-nano-footer.png)
 
 ---
 
@@ -62,13 +62,13 @@ Deploy the portfolio website to the Nginx web root.
 
 #### Screenshot 3 — Output of `sudo nginx -t` showing configuration test successful
 
-Add your screenshot here.
+![sudo nginx -t showing configuration test successful](screenshots/task3-nginx-t.png)
 
 ---
 
 #### Screenshot 4 — Output of `ls /var/www/html` showing deployed website files
 
-Add your screenshot here.
+![ls /var/www/html showing deployed website files](screenshots/task4-ls-var-www.png)
 
 ---
 
@@ -82,13 +82,13 @@ Verify the deployed website is publicly accessible and the footer contains your 
 
 #### Screenshot 5 — Output of `curl ifconfig.me` showing the server's public IP address
 
-Add your screenshot here.
+![curl ifconfig.me showing the server public IP](screenshots/task5-curl-ifconfig.png)
 
 ---
 
 #### Screenshot 6 — Browser showing the live website with your Full Name and deployment details in the footer
 
-Add your screenshot here.
+![Live website in browser with Victor Durojaiye in the footer](screenshots/task6-browser-footer.png)
 
 ---
 
@@ -102,13 +102,13 @@ Verify the deployed website and Nginx service are healthy.
 
 #### Screenshot 7 — Output of `systemctl is-enabled nginx`
 
-Add your screenshot here.
+![systemctl is-enabled nginx showing enabled](screenshots/task7-is-enabled.png)
 
 ---
 
 #### Screenshot 8 — Output of `curl -I http://localhost` showing 200 OK
 
-Add your screenshot here.
+![curl -I http://localhost showing 200 OK](screenshots/task8-curl-localhost.png)
 
 ---
 
@@ -120,13 +120,13 @@ Add your screenshot here.
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
+https://www.linkedin.com/posts/victor-jaiye_deploying-a-website-is-not-just-about-dragging-share-7484131193668472832-QA8V/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABkZOQEB3T6FCcu0A1jCAOaZB5ag2lTqKeE
 
 ---
 
 #### Screenshot — Published LinkedIn post showing the live website with your Full Name in the footer
 
-Add your screenshot here.
+![Published LinkedIn post](screenshots/a4-linkedin-post.png)
 
 ---
 
@@ -141,18 +141,18 @@ Add your screenshot here.
 
 # Completion Checklist
 
-- [ ] Screenshot 0: Nginx service status (active/running)
-- [ ] Screenshot 1: Website files downloaded and extracted
-- [ ] Screenshot 2: Footer updated with Full Name, Group, Week, and Date
-- [ ] Screenshot 3: Nginx configuration test successful
-- [ ] Screenshot 4: Website files deployed to /var/www/html
-- [ ] Screenshot 5: Public IP retrieved
-- [ ] Screenshot 6: Live website accessible in browser with footer details
-- [ ] Screenshot 7: Nginx enabled on boot
-- [ ] Screenshot 8: Local HTTP response returns 200 OK
-- [ ] LinkedIn post published and URL submitted
-- [ ] Full Name visible in all required screenshots
-- [ ] No sensitive data exposed
+- [x] Screenshot 0: Nginx service status (active/running)
+- [x] Screenshot 1: Website files downloaded and extracted
+- [x] Screenshot 2: Footer updated with Full Name, Group, Week, and Date
+- [x] Screenshot 3: Nginx configuration test successful
+- [x] Screenshot 4: Website files deployed to /var/www/html
+- [x] Screenshot 5: Public IP retrieved
+- [x] Screenshot 6: Live website accessible in browser with footer details
+- [x] Screenshot 7: Nginx enabled on boot
+- [x] Screenshot 8: Local HTTP response returns 200 OK
+- [x] LinkedIn post published and URL submitted
+- [x] Full Name visible in all required screenshots
+- [x] No sensitive data exposed
 
 ---
 
