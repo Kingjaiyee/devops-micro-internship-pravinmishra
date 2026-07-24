@@ -3,7 +3,7 @@
 ![Cohort](https://img.shields.io/badge/Cohort-3-blue?style=for-the-badge)
 ![Program](https://img.shields.io/badge/DevOps_Micro_Internship-Pravin_Mishra-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
-![Weeks](https://img.shields.io/badge/Weeks_Completed-3%2F14-green?style=for-the-badge)
+![Weeks](https://img.shields.io/badge/Weeks_Completed-4%2F14-green?style=for-the-badge)
 
 > 👋 **New here?** Read the [submission instructions](./onboarding) first — how to fork, fill in, and submit your assignments.
 > Find all the required links & assignment guidelines from here [Required links](./dmi_cohort3_resources.md)
@@ -80,7 +80,7 @@ This is not a course. It is an internship-style program — real deployments, re
 [![Week 03 – Linux & Bash](./badges/week-03.svg)](./week-03-linux-and-bash-for-devops/)
 
 <!-- Week 04 → Git & GitHub -->
-<!-- [![Week 04 – Git](./badges/week-04.svg)](./week-04-github/) -->
+[![Week 04 – Git](./badges/week-04.svg)](./week-04-github/)
 
 <!-- Week 05 → DevOps Lifecycle & Agile -->
 <!-- [![Week 05 – Agile](./badges/week-05.svg)](./week-05-devops-lifecycle/) -->
@@ -134,7 +134,7 @@ This is not a course. It is an internship-style program — real deployments, re
 | 01 | Success Mindset | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_there-was-a-season-when-i-was-hungry-for-activity-7478193278081802240-kY68) | [Blog Post](https://www.linkedin.com/pulse/man-who-rebuilt-his-hunger-victor-durojaiye-20-victor-durojaiye-osmje/) |
 | 02 | Agentic AI with Claude Code | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-agenticai-claudecode-ugcPost-7481589577506332672-Xv6l/) | [Blog Post](https://www.linkedin.com/pulse/reflection-week-2-victor-durojaiye-victor-durojaiye-rrste/) |
 | 03 | Linux & Bash for DevOps | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_completing-week-3-of-the-devops-micro-internship-activity-7484170717459189761-9Oxe) | [Blog Post](https://www.linkedin.com/pulse/teaching-ai-diagnose-act-victor-durojaiye-xanfe) |
-| 04 | Git & GitHub | ⬜ Not Started | ⏳ Pending | — | — |
+| 04 | Git & GitHub | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-devops-git-share-7486547400371920896-WfFi/) | [Blog Post](https://www.linkedin.com/pulse/from-git-init-safety-net-my-week-4-devops-micro-victor-durojaiye-uxgoe) |
 | 05 | DevOps Lifecycle & Agile | ⬜ Not Started | ⏳ Pending | — | — |
 | 06 | AWS Cloud | ⬜ Not Started | ⏳ Pending | — | — |
 | 07 | Azure Cloud | ⬜ Not Started | ⏳ Pending | — | — |
