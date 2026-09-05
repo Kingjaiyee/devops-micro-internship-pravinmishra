@@ -52,7 +52,7 @@ Start the web server and confirm the Mini Finance website is accessible through 
 
 Take one screenshot showing the Mini Finance website running in the browser.
 
-Add your screenshot here.
+![Mini Finance website running in the browser via the EC2 public IP](screenshots/a3-task4-mini-finance-live.png)
 
 ---
 
@@ -60,7 +60,7 @@ Add your screenshot here.
 
 Paste the public IP address of your EC2 instance here (e.g. `http://3.91.105.10`):
 
-`Add your URL here`
+`http://13.60.167.102`
 
 ---
 
@@ -74,13 +74,13 @@ Paste the public IP address of your EC2 instance here (e.g. `http://3.91.105.10`
 
 # Completion Checklist
 
-- [ ] EC2 instance launched in a public subnet with SSH (22) and HTTP (80) allowed
-- [ ] Connected to the instance via SSH
-- [ ] Web server (Nginx or Apache) installed
-- [ ] Mini Finance repository cloned and files copied to the web server root
-- [ ] Web server started and website verified in the browser (Screenshot 1)
-- [ ] EC2 Public IP URL included
-- [ ] No sensitive data exposed
+- [x] EC2 instance launched in a public subnet with SSH (22) and HTTP (80) allowed
+- [x] Connected to the instance via SSH
+- [x] Web server (Nginx or Apache) installed
+- [x] Mini Finance repository cloned and files copied to the web server root
+- [x] Web server started and website verified in the browser (Screenshot 1)
+- [x] EC2 Public IP URL included
+- [x] No sensitive data exposed
 
 ---
 
