@@ -20,7 +20,7 @@ Create an architecture diagram showing the custom VPC (10.0.0.0/16), the six sub
 
 #### Diagram image or link
 
-Add your diagram image or link here.
+![Architecture diagram](screenshots/br-submission-07-architecture.png)
 
 ---
 
@@ -34,13 +34,32 @@ Record the AWS Region used and list every AWS service used across networking, co
 
 **Region:**
 
-Write your answer here.
+eu-north-1 (Stockholm), Availability Zones eu-north-1a and eu-north-1b
 
 ---
 
 **Services:**
 
-Write your answer here.
+Networking:
+- Amazon VPC (br-vpc, 10.0.0.0/16)
+- Subnets (6 total across 2 AZs: 2 public web, 2 private app, 2 private database)
+- Internet Gateway (br-igw)
+- NAT Gateway (br-nat-gw, in br-web-a)
+- Route Tables (br-public-rt, br-app-rt, br-db-rt)
+
+Compute:
+- Amazon EC2 (br-web: Next.js + Nginx + PM2; br-app: Node/Express + PM2, private)
+
+Load Balancing:
+- Elastic Load Balancing / Application Load Balancer (br-public-alb internet-facing; br-internal-alb internal)
+- Target Groups (br-web-tg on 80; br-app-tg-5000 on 5000)
+
+Security:
+- Security Groups (br-public-alb-sg, br-web-sg, br-internal-alb-sg, br-app-sg, br-db-sg)
+
+Database:
+- Amazon RDS for MySQL (br-db primary; br-db-replica read replica in second AZ)
+- DB Subnet Group (br-db-subnet-group)
 
 ---
 
@@ -56,7 +75,7 @@ Confirm the Book Review App loads through the public ALB DNS name.
 
 Paste your public ALB DNS name here:
 
-`Add your URL here`
+`http://br-public-alb-154228246.eu-north-1.elb.amazonaws.com`
 
 ---
 
@@ -70,37 +89,37 @@ Capture visual proof of every tier and load balancer.
 
 #### Web EC2
 
-Add your screenshot here.
+![Web EC2](screenshots/br-submission-01-web-ec2.png)
 
 ---
 
 #### App EC2
 
-Add your screenshot here.
+![App EC2](screenshots/br-submission-02-app-ec2.png)
 
 ---
 
 #### Public ALB
 
-Add your screenshot here.
+![Public ALB](screenshots/br-submission-03-public-alb.png)
 
 ---
 
 #### Internal ALB
 
-Add your screenshot here.
+![Internal ALB](screenshots/br-submission-04-internal-alb.png)
 
 ---
 
 #### RDS + Replica
 
-Add your screenshot here.
+![RDS + Replica](screenshots/br-submission-05-rds-replica.png)
 
 ---
 
 #### App UI proof
 
-Add your screenshot here.
+![App UI proof](screenshots/br-submission-06-app-ui.png)
 
 ---
 
@@ -114,19 +133,31 @@ Summarize what worked in the final deployment, the issues encountered and how ea
 
 **What worked:**
 
-Write your answer here.
+The full three-tier stack deployed and worked end to end in a custom VPC across two Availability Zones. The browser reaches only the internet-facing public ALB, which routes to the Next.js/Nginx web tier. Nginx serves the frontend and proxies /api requests to the internal ALB, which forwards to the private Node/Express app tier on port 5000, which connects to the private RDS MySQL database over SSL. The app tier has no public IP and the database has no public access, so neither is reachable from the internet. I verified the whole path by registering a user, logging in, and posting a review through the public ALB URL, with the data persisting in RDS and reading back through every tier. A read replica was created in the second AZ.
 
 ---
 
 **Issues + fixes:**
 
-Write your answer here.
+1. Backend port mismatch. The documentation implied port 3001, but the running backend actually bound to port 5000. I found it by reading the PM2 logs. Fixed by updating br-app-sg to allow TCP 5000 from the internal ALB security group, creating a new target group (br-app-tg-5000) on port 5000, and repointing the internal ALB listener to it.
+
+2. Frontend API path mismatch. The frontend was calling backend routes without the /api prefix (for example /users/register), which returned 404 because Nginx only proxied /api to the internal ALB. I found it in the browser network tab. Fixed by rebuilding the frontend with NEXT_PUBLIC_API_URL=/api, so all API calls became same-origin relative paths that Nginx proxies correctly.
+
+3. Enhanced Monitoring IAM error during RDS creation. Resolved by disabling Enhanced Monitoring.
+
+4. Multi-AZ not available. Multi-AZ deployment is blocked on my account (RDS Free Tier permits single-AZ only), so the RDS primary was launched single-AZ. A read replica in the second AZ was allowed and created, which still demonstrates cross-AZ replication. In a Multi-AZ deployment RDS would keep a synchronous standby in the second AZ and fail over automatically on the same endpoint.
 
 ---
 
 **Tools/sources used:**
 
-Write your answer here.
+- AWS Management Console (VPC, EC2, RDS, ELB, Security Groups). All infrastructure built via console, no CLI.
+- Git Bash on Windows for SSH, with SSH agent forwarding to reach the private app tier through the web tier.
+- PM2 for process management on both EC2 instances.
+- PM2 logs and the browser DevTools network tab for debugging.
+- Nginx as reverse proxy on the web tier.
+- The Book Review App repository (forked to my GitHub).
+- DMI course material and community walkthroughs for reference.
 
 ---
 
@@ -142,13 +173,13 @@ Publish a LinkedIn post sharing the capstone deployment, including the public AL
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
+https://www.linkedin.com/posts/victor-jaiye_devops-aws-cloudcomputing-activity-7504528277487849472-IbIK
 
 ---
 
 #### Screenshot of LinkedIn post
 
-Add your screenshot here.
+![LinkedIn post](screenshots/br-submission-08-linkedin.png)
 
 ---
 
@@ -161,14 +192,14 @@ Add your screenshot here.
 
 # Completion Checklist
 
-- [ ] Task 1: Architecture diagram completed
-- [ ] Task 2: AWS Region and services documented
-- [ ] Task 3: Public ALB DNS confirmed working
-- [ ] Task 4: All six evidence screenshots captured (Web Tier, App Tier, both ALBs, RDS + replica, app UI)
-- [ ] Task 5: Deployment summary completed (what worked, issues/fixes, tools/sources)
-- [ ] LinkedIn post published and URL submitted
-- [ ] App Tier and Database Tier confirmed not publicly accessible
-- [ ] No sensitive data exposed
+- [x] Task 1: Architecture diagram completed
+- [x] Task 2: AWS Region and services documented
+- [x] Task 3: Public ALB DNS confirmed working
+- [x] Task 4: All six evidence screenshots captured (Web Tier, App Tier, both ALBs, RDS + replica, app UI)
+- [x] Task 5: Deployment summary completed (what worked, issues/fixes, tools/sources)
+- [x] LinkedIn post published and URL submitted
+- [x] App Tier and Database Tier confirmed not publicly accessible
+- [x] No sensitive data exposed
 
 ---
 
