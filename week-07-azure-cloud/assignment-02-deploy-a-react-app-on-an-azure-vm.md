@@ -20,7 +20,9 @@ Create the Azure Resource Group `react-app-rg` in a region close to you.
 
 #### Screenshot 1 — Resource Group overview showing the name and region
 
-Add your screenshot here.
+![Resource group overview](screenshots/a2-task1-resource-group.png)
+
+Region: West Europe. I am based in Lagos, and West Europe gave me better routing than the East US and North Europe examples in the walkthrough.
 
 ---
 
@@ -34,13 +36,15 @@ Create an Ubuntu 20.04 LTS VM (size B1s) with a Network Security Group allowing 
 
 #### Screenshot 2 — Azure VM overview page showing the VM name, Resource Group, and region
 
-Add your screenshot here.
+![VM overview](screenshots/a2-task2-vm-overview.png)
+
+Note: I used Ubuntu Server 24.04 LTS rather than 20.04. Ubuntu 20.04 is past its standard support window, and `apt install nodejs` on 20.04 installs Node 10, which cannot run `react-scripts build`. On 24.04 the same command gives Node 18 and the build completes. Everything else matches the assignment, including the B1s size.
 
 ---
 
 #### Screenshot 3 — Network Security Group inbound rules showing ports 22 and 80 allowed
 
-Add your screenshot here.
+![NSG inbound rules](screenshots/a2-task2-nsg-rules.png)
 
 ---
 
@@ -54,7 +58,7 @@ Connect to the VM over SSH and confirm the Linux prompt is visible.
 
 #### Screenshot 4 — Terminal showing a successful SSH login with the prompt visible
 
-Add your screenshot here.
+![SSH login](screenshots/a2-task3-ssh-login.png)
 
 ---
 
@@ -68,7 +72,7 @@ Update Ubuntu and install Git, Node.js, and npm.
 
 #### Screenshot 5 — Terminal output showing `node -v` and `npm -v`
 
-Add your screenshot here.
+![Node and npm versions](screenshots/a2-task4-node-npm-versions.png)
 
 ---
 
@@ -82,7 +86,9 @@ Clone `my-react-app`, install dependencies, and run `npm run build` to produce t
 
 #### Screenshot 6 — Terminal showing successful `npm run build` completion and `ls -la build` output
 
-Add your screenshot here.
+![npm run build and build directory](screenshots/a2-task5-npm-build.png)
+
+Before building, I replaced the `Your Full Name` and `DD/MM/YYYY` placeholders in the app source with my own name and the deployment date, so the served page shows real values rather than the template defaults.
 
 ---
 
@@ -96,13 +102,15 @@ Install Nginx and configure it to serve the `build/` directory with `try_files $
 
 #### Screenshot 7 — Successful `sudo nginx -t` output
 
-Add your screenshot here.
+![nginx -t output](screenshots/a2-task6-nginx-test.png)
 
 ---
 
 #### Screenshot 8 — Nginx configuration snippet showing the build root and `try_files` directive
 
-Add your screenshot here.
+![Nginx configuration](screenshots/a2-task6-nginx-config.png)
+
+Nginx runs as `www-data`, so it also needed execute permission to traverse into `/home/azureuser` before it could read the build folder. Without that it returns 403 even with a correct config.
 
 ---
 
@@ -116,7 +124,9 @@ Confirm the React app loads through the VM's public IP, navigation works, and a 
 
 #### Screenshot 9 — Browser showing the React app with the public IP visible in the address bar
 
-Add your screenshot here.
+![React app served from the VM public IP](screenshots/a2-task7-app-public-ip.png)
+
+Note: `my-react-app` is a single-page app with no nested routes, so there is no second route to navigate to or refresh on. The `try_files $uri /index.html;` directive is in place and shown in Screenshot 8, so SPA routing would be handled correctly if routes were added. Refreshing the page served the app normally.
 
 ---
 
@@ -130,7 +140,9 @@ Restrict the SSH Network Security Group rule to your IP if not already restricte
 
 #### Screenshot 10 (optional) — Network Security Group rule showing SSH restricted to your IP
 
-Add your screenshot here.
+![SSH restricted to my IP](screenshots/a2-task8-ssh-restricted.png)
+
+`sudo ufw status` returned inactive, which is the Ubuntu default on Azure, so nothing at the OS level was blocking port 80. Filtering is handled by the NSG. The source IP is redacted in the screenshot.
 
 ---
 
@@ -143,15 +155,15 @@ Add your screenshot here.
 
 # Completion Checklist
 
-- [ ] Task 1: Resource Group created (Screenshot 1)
-- [ ] Task 2: Ubuntu VM provisioned with correct NSG rules (Screenshots 2 & 3)
-- [ ] Task 3: SSH access verified (Screenshot 4)
-- [ ] Task 4: Git, Node.js, and npm installed (Screenshot 5)
-- [ ] Task 5: React app built successfully (Screenshot 6)
-- [ ] Task 6: Nginx configured with SPA routing support (Screenshots 7 & 8)
-- [ ] Task 7: App verified via the VM public IP, including route refresh (Screenshot 9)
-- [ ] Task 8: SSH hardening applied (Screenshot 10, optional)
-- [ ] No sensitive data exposed
+- [x] Task 1: Resource Group created (Screenshot 1)
+- [x] Task 2: Ubuntu VM provisioned with correct NSG rules (Screenshots 2 & 3)
+- [x] Task 3: SSH access verified (Screenshot 4)
+- [x] Task 4: Git, Node.js, and npm installed (Screenshot 5)
+- [x] Task 5: React app built successfully (Screenshot 6)
+- [x] Task 6: Nginx configured with SPA routing support (Screenshots 7 & 8)
+- [x] Task 7: App verified via the VM public IP, including route refresh (Screenshot 9)
+- [x] Task 8: SSH hardening applied (Screenshot 10, optional)
+- [x] No sensitive data exposed
 
 ---
 
