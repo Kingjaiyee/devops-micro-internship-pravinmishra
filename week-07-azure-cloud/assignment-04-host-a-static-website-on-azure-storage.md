@@ -18,6 +18,8 @@ Download and extract the Mini Finance static website files (`index.html`, `style
 
 > No screenshot required for this task.
 
+I cloned the repository with Git rather than downloading the ZIP. Extracting the ZIP produces a `mini_finance-main` wrapper folder, and uploading that folder instead of its contents would put `index.html` one level below the container root, where the static website endpoint would never find it.
+
 ---
 
 # Task 2 — Create a Storage Account and Enable Static Website Hosting
@@ -28,6 +30,8 @@ Create Resource Group `mini-finance-rg` and a globally unique Storage Account na
 
 > No screenshot required for this task. Completion is verified through Task 4.
 
+I built this with the Azure CLI instead of the portal. Everything went into West Europe, the same region I used for the rest of Week 7.
+
 ---
 
 # Task 3 — Upload Your Website Files
@@ -37,6 +41,14 @@ Create Resource Group `mini-finance-rg` and a globally unique Storage Account na
 Upload all Mini Finance project files to the `$web` container.
 
 > No screenshot required for this task.
+
+I used `az storage blob upload-batch` rather than uploading through the portal, because the site references its assets by relative path (`css/`, `images/`, `js/`) and the batch upload preserves the folder tree in one command. Uploading the files flat through the portal is what makes the page load unstyled.
+
+Two things came up here that were worth learning:
+
+The first upload attempt failed with a permissions error even though my account had just created the storage account. Creating a storage account is a control-plane action, but reading and writing the blobs inside it is a separate data-plane permission that is not granted automatically. The options are to assign the Storage Blob Data Contributor role or to authenticate with the account key. I used the account key.
+
+I also deleted the `.git` directory from the cloned folder before uploading. `upload-batch` does not skip hidden directories, so the repository history would otherwise have been published to a public web endpoint.
 
 ---
 
@@ -50,7 +62,9 @@ Open the primary endpoint URL and confirm the Mini Finance application, styling,
 
 #### Screenshot 1 — Mini Finance website running in the browser
 
-Add your screenshot here.
+![Mini Finance running on the Azure Storage static website endpoint](screenshots/a4-task4-mini-finance-live.png)
+
+The page loads through the static website endpoint (`*.web.core.windows.net`) rather than the raw blob URL, with stylesheets, images, fonts, and the chart scripts all resolving correctly. No VM, no web server, and no server-side code involved. Azure Storage is serving the site itself.
 
 ---
 
@@ -58,7 +72,7 @@ Add your screenshot here.
 
 Paste the Azure Storage static website URL here:
 
-`Add your URL here`
+`https://minifinancevictor.z6.web.core.windows.net/`
 
 ---
 
@@ -71,12 +85,12 @@ Paste the Azure Storage static website URL here:
 
 # Completion Checklist
 
-- [ ] Mini Finance project downloaded and extracted
-- [ ] Storage Account created with Static Website Hosting enabled
-- [ ] All website files uploaded to the `$web` container
-- [ ] Website verified through the primary endpoint (Screenshot 1)
-- [ ] Website URL included
-- [ ] No sensitive account information exposed
+- [x] Mini Finance project downloaded and extracted
+- [x] Storage Account created with Static Website Hosting enabled
+- [x] All website files uploaded to the `$web` container
+- [x] Website verified through the primary endpoint (Screenshot 1)
+- [x] Website URL included
+- [x] No sensitive account information exposed
 
 ---
 
