@@ -3,7 +3,7 @@
 ![Cohort](https://img.shields.io/badge/Cohort-3-blue?style=for-the-badge)
 ![Program](https://img.shields.io/badge/DevOps_Micro_Internship-Pravin_Mishra-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
-![Weeks](https://img.shields.io/badge/Weeks_Completed-6%2F14-green?style=for-the-badge)
+![Weeks](https://img.shields.io/badge/Weeks_Completed-7%2F14-green?style=for-the-badge)
 
 > 👋 **New here?** Read the [submission instructions](./onboarding) first — how to fork, fill in, and submit your assignments.
 > Find all the required links & assignment guidelines from here [Required links](./dmi_cohort3_resources.md)
@@ -89,7 +89,7 @@ This is not a course. It is an internship-style program — real deployments, re
 [![Week 06 – AWS](./badges/week-06.svg)](./week-06-aws-cloud/)
 
 <!-- Week 07 → Azure Cloud -->
-<!-- [![Week 07 – Azure](./badges/week-07.svg)](./week-07-azure-cloud/) -->
+[![Week 07 – Azure](./badges/week-07.svg)](./week-07-azure-cloud/)
 
 <!-- Week 08 → Terraform -->
 <!-- [![Week 08 – Terraform](./badges/week-08.svg)](./week-08-terraform/) -->
@@ -137,7 +137,7 @@ This is not a course. It is an internship-style program — real deployments, re
 | 04 | Git & GitHub | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-devops-git-share-7486547400371920896-WfFi/) | [Blog Post](https://www.linkedin.com/pulse/from-git-init-safety-net-my-week-4-devops-micro-victor-durojaiye-uxgoe) |
 | 05 | DevOps Lifecycle & Agile | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-agenticai-scrum-share-7491828193998557184-0ZmD/) | [Blog Post](https://www.linkedin.com/pulse/i-ran-scrum-hand-four-weeks-gave-ai-window-boardand-door-durojaiye-8sade) |
 | 06 | AWS Cloud | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-aws-cloudcomputing-activity-7504528277487849472-IbIK) | [Blog Post](https://www.linkedin.com/pulse/week-i-stopped-trusting-my-own-deployments-victor-durojaiye-jpdne) |
-| 07 | Azure Cloud | ⬜ Not Started | ⏳ Pending | — | — |
+| 07 | Azure Cloud | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-azure-devops-activity-7505725849812361217-tYnN/) | [Blog Post](https://www.linkedin.com/pulse/running-application-tells-you-truth-victor-durojaiye-nfyme/) |
 | 08 | Terraform | ⬜ Not Started | ⏳ Pending | — | — |
 | 09 | Ansible | ⬜ Not Started | ⏳ Pending | — | — |
 | 10 | Azure DevOps (CI/CD) | ⬜ Not Started | ⏳ Pending | — | — |
