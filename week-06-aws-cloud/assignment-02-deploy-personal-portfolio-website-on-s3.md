@@ -106,7 +106,7 @@ Edit a small visible detail, re-upload it to S3, and confirm the change appears 
 
 #### Screenshot 7 (optional) — Before and after views, or a browser view showing the updated text
 
-Add your screenshot here.
+![Screenshot 7](screenshots/a2-task6-live-site.png)
 
 ---
 
@@ -126,7 +126,7 @@ Add your screenshot here.
 - [x] Task 4: Static website hosting enabled (Screenshot 4)
 - [x] Task 5: Public-read bucket policy saved (Screenshot 5)
 - [x] Task 6: Live website verified through the S3 website endpoint (Screenshot 6)
-- [ ] Task 7: Optional small update re-uploaded and verified (Screenshot 7)
+- [x] Task 7: Optional small update re-uploaded and verified (Screenshot 7)
 - [x] S3 Website Endpoint URL included
 - [x] No sensitive account information exposed
 
