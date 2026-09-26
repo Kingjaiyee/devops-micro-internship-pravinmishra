@@ -1,0 +1,21 @@
+===========================================================
+ Terraform Drift and Policy Review
+===========================================================
+Reviewer:   Victor Durojaiye
+Generated:  2026-09-26 21:33:48 UTC
+Project:    /c/Users/victo/tf-drift-lab/terraform
+Checks run: plan_status destructive_actions open_ingress
+-----------------------------------------------------------
+[1] plan_status          : WARN
+    exit 2: changes are pending
+[2] destructive_actions  : PASS
+    Resources with a delete action: 0
+    No delete or replace actions in the plan.
+[3] open_ingress         : FAIL
+    Ingress rules open to 0.0.0.0/0: 1
+    aws_security_group.lab port 22-22/tcp open to 0.0.0.0/0
+-----------------------------------------------------------
+Overall Status: FAIL
+Plan JSON: /c/Users/victo/tf-drift-lab/reports/tfplan.json
+===========================================================
+This review is read only. No infrastructure was changed.

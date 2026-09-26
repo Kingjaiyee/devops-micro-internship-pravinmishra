@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(terraform apply:*)",
+      "Bash(terraform destroy:*)"
+    ],
+    "deny": [
+      "Read(./terraform/*.tfstate)",
+      "Read(./terraform/*.tfstate.*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // \"\"'); report=\"$CLAUDE_PROJECT_DIR/reports/tf-drift-report.txt\"; case \"$cmd\" in *'terraform apply'*|*'terraform destroy'*|*'-auto-approve'*) if [ -f \"$report\" ] && grep -q 'Overall Status: FAIL' \"$report\"; then echo 'BLOCKED: the latest Terraform drift review reported Overall Status: FAIL. Review and resolve the findings in reports/tf-drift-report.txt before any apply. Infrastructure-changing commands are run by the human, not by Claude Code.' >&2; exit 2; fi ;; esac; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

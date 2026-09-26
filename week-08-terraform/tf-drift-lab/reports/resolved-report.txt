@@ -1,0 +1,21 @@
+===========================================================
+ Terraform Drift and Policy Review
+===========================================================
+Reviewer:   Victor Durojaiye
+Generated:  2026-09-26 21:43:20 UTC
+Project:    /c/Users/victo/tf-drift-lab/terraform
+Checks run: plan_status destructive_actions open_ingress
+-----------------------------------------------------------
+[1] plan_status          : PASS
+    exit 0: no pending changes, configuration and infrastructure agree
+[2] destructive_actions  : PASS
+    Resources with a delete action: 0
+    No delete or replace actions in the plan.
+[3] open_ingress         : PASS
+    Ingress rules open to 0.0.0.0/0: 0
+    No ingress rule allows 0.0.0.0/0.
+-----------------------------------------------------------
+Overall Status: HEALTHY
+Plan JSON: /c/Users/victo/tf-drift-lab/reports/tfplan.json
+===========================================================
+This review is read only. No infrastructure was changed.
