@@ -1,0 +1,24 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Ansible and linter runtime artifacts
+*.retry
+.ansible/
+.cache/
+
+# Secrets and keys: never commit
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.vault_pass*
+vault_pass*
+.env
+*.env
+
+# Editor and OS noise
+*.swp
+.DS_Store
+Thumbs.db

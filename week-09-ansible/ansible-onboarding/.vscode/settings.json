@@ -1,0 +1,23 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "ansible.python.interpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "ansible.validation.enabled": true,
+  "ansible.validation.lint.enabled": true,
+  "yaml.validate": true,
+  "files.associations": {
+    "**/playbooks/*.yml": "ansible",
+    "**/roles/**/*.yml": "ansible"
+  },
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[ansible]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  }
+}
