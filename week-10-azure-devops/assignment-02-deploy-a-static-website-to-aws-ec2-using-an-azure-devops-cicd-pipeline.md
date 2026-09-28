@@ -1,6 +1,6 @@
-# Assignment 2 — Deploy AStatic Website to AWS EC2 Using an Azure DevOps CI/CD Pipeline
+# Assignment 2 — Deploy A Static Website to AWS EC2 Using an Azure DevOps CI/CD Pipeline
 
-Part of the DevOps Micro Internship (DMI) Cohort 3 with Agentic AI
+Part of the DevOps Micro Internship (DMI) with Agentic AI
 
 ---
 
@@ -215,4 +215,4 @@ Add your screenshot here.
 
 ---
 
-*This submission is part of the DevOps Micro Internship (DMI) Cohort 3 — Agentic AI Track.*
+*This submission is part of the DevOps Micro Internship (DMI) — Agentic AI Track.*

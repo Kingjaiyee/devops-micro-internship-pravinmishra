@@ -1,6 +1,6 @@
 # Assignment 1 — Configure a Self-Hosted Azure DevOps Agent on Ubuntu
 
-Part of the DevOps Micro Internship (DMI) Cohort 3 with Agentic AI
+Part of the DevOps Micro Internship (DMI) with Agentic AI
 
 ---
 
@@ -204,9 +204,6 @@ Add your screenshot here.
 * Include the contents of your completed `azure-pipelines.yml` file.
 * Include Screenshot 7 and the LinkedIn post URL if the LinkedIn requirement applies.
 * Do not expose a PAT, SSH private key, password, account details, or another secret.
-* Submit only a Google Doc link.
-* Set the Google Doc permission to **Anyone with the link can view**.
-* Test the link in an incognito or private browser window.
 
 ---
 
@@ -228,9 +225,7 @@ Add your screenshot here.
 * Screenshot 7 and the LinkedIn post URL are included if applicable
 * The completed `azure-pipelines.yml` content is included
 * No PAT, SSH private key, password, or other secret is visible
-* The Google Doc is accessible to anyone with the link
-* The Google Doc link was tested in an incognito or private browser window
 
 ---
 
-*This submission is part of the DevOps Micro Internship (DMI) Cohort 3 — Agentic AI Track.*
+*This submission is part of the DevOps Micro Internship (DMI) — Agentic AI Track.*

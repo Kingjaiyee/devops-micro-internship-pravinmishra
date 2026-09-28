@@ -1,12 +1,12 @@
 # Assignment 5 — Sharing the Docker Container on Docker Hub
 
-Part of the DevOps Micro Internship (DMI) Cohort 3 with Agentic AI
+Part of the DevOps Micro Internship (DMI) with Agentic AI
 
 ---
 
 ## Purpose
 
-In this assignment, you will publish a Dockerized React application to Docker Hub, then pull and run it to verify it can be downloaded and executed from another system.
+In this assignment, you will publish a Dockerized React application to Docker Hub, remove the local image tags, pull the image again from Docker Hub, and run it to verify that it can be downloaded and deployed from a container registry.
 
 ---
 
@@ -14,65 +14,149 @@ In this assignment, you will publish a Dockerized React application to Docker Hu
 
 ## Goal
 
-Create a Docker Hub repository (`my-react-app`), log in from the CLI, tag and push your local image, verify it on Docker Hub, then pull and run it to confirm the application is accessible.
+Tag a locally built React image, publish it to Docker Hub, remove the local copy, pull it again from Docker Hub, and run it successfully.
 
 ### Evidence
 
-#### Screenshot 1 — Docker Hub repository (`my-react-app`)
+#### Screenshot 1 — Public Docker Hub Repository
+
+Add a screenshot of Docker Hub showing your newly created public repository:
+
+```text
+my-react-app
+```
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 2 — Successful `docker login`
+#### Screenshot 2 — Successful Docker Login
+
+Add a screenshot of the terminal showing:
+
+```text
+Login Succeeded
+```
+
+Ensure that your full name is visible and that no password, Personal Access Token, or device code is exposed.
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 3 — Successful `docker tag`
+#### Screenshot 3 — Correctly Tagged Image
+
+Add a screenshot of the terminal showing:
+
+```bash
+docker image ls <YOUR_DOCKERHUB_USERNAME>/my-react-app
+```
+
+The output must show the `latest` tag.
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 4 — Successful `docker push`
+#### Screenshot 4 — Successful Docker Push
+
+Add a screenshot of the terminal showing successful completion of:
+
+```bash
+docker push <YOUR_DOCKERHUB_USERNAME>/my-react-app:latest
+```
+
+The output must include a pushed status or image digest.
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 5 — Docker Hub repository showing the uploaded image
+#### Screenshot 5 — Published `latest` Tag in Docker Hub
+
+Add a screenshot of your Docker Hub repository showing the uploaded `latest` image tag.
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 6 — Successful `docker pull`
+#### Screenshot 6 — Local Image Removed and Pulled Again
+
+Add a screenshot of the terminal showing:
+
+- The targeted local image tags removed
+- Successful `docker pull` output
+- `docker image ls` showing the pulled image
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 7 — Output of `docker ps`
+#### Screenshot 7 — Running Pulled Image
+
+Add a screenshot of the terminal showing:
+
+```bash
+docker ps
+```
+
+The output must show the running `react-container` with:
+
+```text
+0.0.0.0:80->80/tcp
+```
 
 Add your screenshot here.
 
 ---
 
-#### Screenshot 8 — Browser displaying the running React application
+#### Screenshot 8 — React Application in Browser
+
+Add a browser screenshot showing the React application at:
+
+```text
+http://<YOUR-VM-PUBLIC-IP>
+```
+
+Ensure that the VM public IP is visible in the address bar. Add your full name as a clear caption directly below the screenshot.
 
 Add your screenshot here.
 
 ---
 
-# LinkedIn Post (Optional)
+# Docker Hub Repository URL
+
+**Repository URL:** `Add your Docker Hub repository URL here`
+
+---
+
+# Registry and Image Tagging Notes
+
+Write a short explanation covering:
+
+- Why image tagging is required before pushing to Docker Hub
+- Why a container registry is useful in DevOps workflows
+- Why production deployments should use versioned image tags instead of relying only on `latest`
+
+Write your explanation here.
+
+---
+
+# LinkedIn Requirement
 
 ## Goal
 
-Create a LinkedIn post covering the assignment title, the Docker Hub repository created, steps performed, key learning outcomes, and a screenshot of the published image.
+Create a LinkedIn post about publishing a Docker container image to Docker Hub.
 
-## Evidence
+Include:
+
+- Assignment title: **Publish a Docker Container Image to Docker Hub**
+- Your Docker Hub repository URL
+- What you published
+- How you verified the remote image by pulling and running it
+- Key learning outcomes
+
+### Evidence
 
 #### LinkedIn Post URL
 
@@ -82,29 +166,43 @@ Paste your LinkedIn post URL here:
 
 ---
 
-#### Screenshot — Published LinkedIn post
+#### LinkedIn Post Screenshot
 
-Add your screenshot here.
+Add a screenshot of the published LinkedIn post here.
 
 ---
 
 # Submission Instructions
 
-- Add all required screenshots in your submission
-- Include the Docker Hub repository URL
-- Full name must be visible in required screenshots
-- Do not expose passwords or sensitive credentials
+- Complete all steps in sequence.
+- Include Screenshots 1–8 exactly as specified.
+- Include your Docker Hub repository URL.
+- Include the Registry and Image Tagging Notes.
+- Include the LinkedIn post URL and screenshot.
+- Ensure that your full name is visible in all terminal screenshots.
+- Add your full name as a clear caption below the browser screenshot.
+- Do not expose passwords, Personal Access Tokens, device codes, credentials, or other sensitive information.
 
 ---
 
 # Completion Checklist
 
-- [ ] Docker Hub account and repository created
-- [ ] Docker image tagged and pushed successfully (Screenshots 1–5)
-- [ ] Docker image pulled and container run successfully (Screenshots 6–7)
-- [ ] React application accessible in the browser (Screenshot 8)
-- [ ] No sensitive information exposed
-
+- [ ] Public `my-react-app` repository created
+- [ ] Docker login completed successfully
+- [ ] `react-multistage:latest` tagged correctly
+- [ ] Image pushed to Docker Hub
+- [ ] `latest` tag verified in Docker Hub
+- [ ] Targeted local image tags removed
+- [ ] Image pulled again from Docker Hub
+- [ ] Pulled image runs successfully
+- [ ] React application is accessible through the VM public IP
+- [ ] Docker Hub repository URL included
+- [ ] Registry and image-tagging notes completed
+- [ ] LinkedIn post URL and screenshot included
+- [ ] All required screenshots included
+- [ ] Full name visible in terminal screenshots
+- [ ] Browser screenshot has a full-name caption
+- [ ] No passwords, tokens, or credentials exposed
 ---
 
 ## 📌 About DMI & CloudAdvisory
@@ -127,4 +225,4 @@ It helps learners build strong DevOps foundations with hands-on experience.
 
 ---
 
-*This submission is part of DevOps Micro Internship (DMI) Cohort 3 — Agentic AI Track.*
+*This submission is part of DevOps Micro Internship (DMI) — Agentic AI Track.*
