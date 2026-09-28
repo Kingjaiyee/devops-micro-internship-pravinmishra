@@ -1,0 +1,66 @@
+---
+- name: Install and configure Nginx
+  hosts: web
+  become: true
+  tasks:
+    - name: Install Nginx and refresh the apt cache only if older than an hour
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+- name: Deploy the static website
+  hosts: web
+  become: true
+  tasks:
+    - name: Copy index.html to the web root
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: "0644"
+      notify: Reload nginx
+
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+- name: Verify both websites from the controller
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  vars:
+    expected_text: Victor Durojaiye
+  tasks:
+    - name: Request each web server over HTTP
+      ansible.builtin.uri:
+        url: "http://{{ hostvars[item].ansible_host }}"
+        status_code: 200
+        return_content: true
+      loop: "{{ groups['web'] }}"
+      loop_control:
+        label: "{{ item }}"
+      register: website_checks
+
+    - name: Confirm HTTP 200 and the personalized footer on each server
+      ansible.builtin.assert:
+        that:
+          - check.status == 200
+          - expected_text in check.content
+        success_msg: "{{ check.item }} returned HTTP {{ check.status }} with the expected footer"
+        fail_msg: "{{ check.item }} failed: HTTP {{ check.status }}, footer found={{ expected_text in check.content }}"
+      loop: "{{ website_checks.results }}"
+      loop_control:
+        loop_var: check
+        label: "{{ check.item }}"
