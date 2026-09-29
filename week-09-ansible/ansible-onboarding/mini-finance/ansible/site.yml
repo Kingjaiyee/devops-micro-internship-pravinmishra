@@ -1,0 +1,80 @@
+---
+- name: Install Nginx, Git and rsync
+  hosts: web
+  become: true
+  tasks:
+    - name: Install nginx, git and rsync, refreshing the apt cache only if older than an hour
+      ansible.builtin.apt:
+        name:
+          - nginx
+          - git
+          - rsync
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+- name: Deploy the Mini Finance website
+  hosts: web
+  become: true
+  vars:
+    repo_url: https://github.com/pravinmishraaws/mini_finance.git
+    repo_version: 296334fc27de87bdfcafdad041e41573d8815700
+    clone_dir: /opt/mini-finance
+    web_root: /var/www/html/
+  tasks:
+    - name: Clone the Mini Finance repository at a pinned commit
+      ansible.builtin.git:
+        repo: "{{ repo_url }}"
+        dest: "{{ clone_dir }}"
+        version: "{{ repo_version }}"
+
+    - name: Synchronize the website files into the web root
+      ansible.posix.synchronize:
+        src: "{{ clone_dir }}/"
+        dest: "{{ web_root }}"
+        delete: true
+        rsync_opts:
+          - "--exclude=.git"
+          - "--chown=www-data:www-data"
+      delegate_to: "{{ inventory_hostname }}"
+      notify: Reload nginx
+
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+- name: Verify the Mini Finance website from the controller
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Request the website over HTTP
+      ansible.builtin.uri:
+        url: "http://{{ hostvars[item].ansible_host }}/"
+        status_code: 200
+        return_content: true
+      loop: "{{ groups['web'] }}"
+      loop_control:
+        label: "{{ item }}"
+      register: site_checks
+
+    - name: Assert HTTP 200 and that Mini Finance replaced the default page
+      ansible.builtin.assert:
+        that:
+          - check.status == 200
+          - "'Welcome to nginx' not in check.content"
+        success_msg: "{{ check.item }} returned HTTP {{ check.status }} and is serving Mini Finance"
+        fail_msg: "{{ check.item }} failed: HTTP {{ check.status }}"
+      loop: "{{ site_checks.results }}"
+      loop_control:
+        loop_var: check
+        label: "{{ check.item }}"
