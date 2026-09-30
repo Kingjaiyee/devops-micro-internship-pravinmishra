@@ -1,0 +1,6 @@
+---
+- name: Reload EpicBook
+  ansible.builtin.command: pm2 reload {{ pm2_ecosystem_file }} --update-env
+  become: true
+  become_user: "{{ app_user }}"
+  changed_when: true

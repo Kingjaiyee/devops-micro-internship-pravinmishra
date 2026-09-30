@@ -1,0 +1,24 @@
+# Terraform: state, plans, caches and local overrides
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Secrets and keys: never commit
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.env
+*.env
+*vault-pass*
+db-password*
+
+# Ansible
+*.retry

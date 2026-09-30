@@ -1,0 +1,29 @@
+---
+# Application
+app_repo: https://github.com/pravinmishraaws/theepicbook.git
+app_version: 763becebb8d3f5663a76bb30facddc25be63cfd5
+app_user: ubuntu
+app_dest: /home/ubuntu/epicbook
+app_port: 8080
+node_env: production
+
+# PM2
+pm2_app_name: epicbook
+pm2_ecosystem_file: /home/ubuntu/epicbook.config.js
+
+# Nginx
+server_name: _
+
+# Managed MySQL (values from terraform output)
+db_host: epicbook-prod-mysql.cb4uoaykuitx.eu-north-1.rds.amazonaws.com
+db_port: 3306
+db_name: bookstore
+db_user: epicadmin
+db_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          66353261306139386165613531366631326234666466646539643730623537386563336163303563
+          6562636632383466636438303065623430343931666564620a663839313730316539613433346565
+          38353637643732636233356563376135616637313165663733646437316532643135336334353134
+          6432336566653131380a626635653837336562626161393663663338363532666237386439343830
+          39643132623565623663643361333061663531396233306339616462393264636362376535363966
+          3364643634313237666664663237383838616533656164313665

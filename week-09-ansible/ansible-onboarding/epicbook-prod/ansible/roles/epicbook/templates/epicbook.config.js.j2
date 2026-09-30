@@ -1,0 +1,15 @@
+// Managed by Ansible. Contains the database connection string: mode 0600.
+module.exports = {
+  apps: [
+    {
+      name: "{{ pm2_app_name }}",
+      cwd: "{{ app_dest }}",
+      script: "server.js",
+      env: {
+        NODE_ENV: "{{ node_env }}",
+        PORT: "{{ app_port }}",
+        JAWSDB_URL: "mysql://{{ db_user }}:{{ db_password }}@{{ db_host }}:{{ db_port }}/{{ db_name }}"
+      }
+    }
+  ]
+};
