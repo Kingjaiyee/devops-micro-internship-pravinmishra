@@ -3,7 +3,7 @@
 ![Cohort](https://img.shields.io/badge/Cohort-3-blue?style=for-the-badge)
 ![Program](https://img.shields.io/badge/DevOps_Micro_Internship-Pravin_Mishra-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
-![Weeks](https://img.shields.io/badge/Weeks_Completed-8%2F14-green?style=for-the-badge)
+![Weeks](https://img.shields.io/badge/Weeks_Completed-9%2F14-green?style=for-the-badge)
 
 > 👋 **New here?** Read the [submission instructions](./onboarding) first — how to fork, fill in, and submit your assignments.
 > Find all the required links & assignment guidelines from here [Required links](./dmi_cohort3_resources.md)
@@ -95,7 +95,7 @@ This is not a course. It is an internship-style program — real deployments, re
 [![Week 08 – Terraform](./badges/week-08.svg)](./week-08-terraform/)
 
 <!-- Week 09 → Ansible -->
-<!-- [![Week 09 – Ansible](./badges/week-09.svg)](./week-09-ansible/) -->
+[![Week 09 – Ansible](./badges/week-09.svg)](./week-09-ansible/)
 
 <!-- Week 10 → Azure DevOps CI/CD -->
 <!-- [![Week 10 – CI/CD](./badges/week-10.svg)](./week-10-azure-devops/) -->
@@ -139,7 +139,7 @@ This is not a course. It is an internship-style program — real deployments, re
 | 06 | AWS Cloud | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-aws-cloudcomputing-activity-7504528277487849472-IbIK) | [Blog Post](https://www.linkedin.com/pulse/week-i-stopped-trusting-my-own-deployments-victor-durojaiye-jpdne) |
 | 07 | Azure Cloud | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_dmibypravinmishra-azure-devops-activity-7505725849812361217-tYnN/) | [Blog Post](https://www.linkedin.com/pulse/running-application-tells-you-truth-victor-durojaiye-nfyme/) |
 | 08 | Terraform | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-terraform-aws-share-7509612345103507457-_6Ul/) | [Blog Post](https://www.linkedin.com/pulse/week-terraform-stopped-being-syntax-victor-durojaiye-fx5je) |
-| 09 | Ansible | ⬜ Not Started | ⏳ Pending | — | — |
+| 09 | Ansible | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7511552629177503744/) | [Blog Post](https://www.linkedin.com/pulse/i-taught-ansible-run-my-servers-built-ai-isnt-allowed-durojaiye-kwuwe) |
 | 10 | Azure DevOps (CI/CD) | ⬜ Not Started | ⏳ Pending | — | — |
 | 11 | Docker | ⬜ Not Started | ⏳ Pending | — | — |
 | 12 | Kubernetes | ⬜ Not Started | ⏳ Pending | — | — |
