@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit",
+      "Write",
+      "NotebookEdit",
+      "Bash(ansible-playbook *)",
+      "Bash(ansible *)",
+      "Bash(ansible-vault *)",
+      "Bash(terraform *)",
+      "Bash(sudo *)",
+      "Bash(ssh *)",
+      "Bash(rm *)",
+      "Read(~/.ssh/**)",
+      "Read(~/.config/**)",
+      "Read(~/.aws/**)",
+      "Bash(wsl *)",
+      "Bash(wsl.exe *)"
+    ]
+  }
+}

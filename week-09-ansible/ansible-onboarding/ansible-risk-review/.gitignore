@@ -1,0 +1,6 @@
+# Regenerated on every run; the saved snapshots are committed instead
+reports/ansible-check-raw.txt
+reports/ansible-risk-report.txt
+
+# Personal Claude Code overrides
+.claude/settings.local.json

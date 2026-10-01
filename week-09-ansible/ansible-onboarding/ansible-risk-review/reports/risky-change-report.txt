@@ -1,0 +1,29 @@
+========================================
+Ansible Change Risk Review
+========================================
+Full Name: Victor Durojaiye
+Timestamp: 2026-10-01T21:43:10Z
+Playbook: /home/kingjaiye/ansible-onboarding/epicbook-prod/ansible/site.yml
+Inventory: /home/kingjaiye/ansible-onboarding/epicbook-prod/ansible/inventory.ini
+Mode: --check --diff dry run only
+
+Ansible dry-run exit code: 0
+
+[PASS] Dry run executed and produced a PLAY RECAP
+[PASS] Recap shows unreachable=0 failed=0
+[WARN] 1 changed task(s) detected - review before applying
+  - would change: common : Remove temporary EpicBook risk test file
+[PASS] No service-restart tasks among the changes
+[PASS] No firewall tasks among the changes
+[PASS] No user/sudo tasks among the changes
+[FAIL] 1 removal task(s) found in the changed set
+  - risky (removal): common : Remove temporary EpicBook risk test file
+
+Summary:
+PASS: 5
+WARN: 1
+FAIL: 1
+Overall Status: FAIL - risky changes present, do not apply without review
+Script Exit Code: 2
+Report File: /home/kingjaiye/ansible-onboarding/ansible-risk-review/reports/ansible-risk-report.txt
+Raw Ansible Output: /home/kingjaiye/ansible-onboarding/ansible-risk-review/reports/ansible-check-raw.txt

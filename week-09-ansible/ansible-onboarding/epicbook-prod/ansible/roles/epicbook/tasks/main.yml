@@ -60,6 +60,7 @@
     "SELECT COUNT(*) FROM information_schema.tables
     WHERE table_schema='{{ db_name }}' AND table_name='Book'"
   register: epicbook_book_table
+  check_mode: false
   changed_when: false
 
 - name: Import the schema and seed data in order (only into an empty database)
@@ -88,6 +89,7 @@
   become: true
   become_user: "{{ app_user }}"
   register: epicbook_pm2
+  check_mode: false
   changed_when: false
   failed_when: false
 

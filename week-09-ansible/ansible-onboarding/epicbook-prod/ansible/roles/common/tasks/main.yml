@@ -10,3 +10,8 @@
     state: present
     update_cache: true
     cache_valid_time: 3600
+
+- name: Remove temporary EpicBook risk test file
+  ansible.builtin.file:
+    path: /tmp/epicbook-risk-test
+    state: absent
