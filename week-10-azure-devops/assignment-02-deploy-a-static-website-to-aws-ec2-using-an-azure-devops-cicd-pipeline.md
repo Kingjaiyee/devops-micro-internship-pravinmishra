@@ -36,7 +36,7 @@ Add a screenshot of Azure Repos showing:
 * Project files
 * `index.html`
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a2-task1-repo-imported.png)
 
 ---
 
@@ -65,7 +65,7 @@ Add a screenshot of the saved SSH Service Connection **Overview** page showing:
 * Service Connection name
 * SSH connection type
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a2-task3-ssh-service-connection.png)
 
 > Do not expose a password, SSH private key, passphrase, or another credential.
 
@@ -91,7 +91,7 @@ Add a screenshot of `azure-pipelines.yml` open in the Azure Repos editor showing
 * `CopyFilesOverSSH@0` task
 * `SSH@0` verification task
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a2-task4-pipeline-yaml.png)
 
 > Ensure that no password, SSH private key, PAT, or AWS credential is visible.
 
@@ -115,7 +115,7 @@ Add a screenshot of the successful pipeline run and log summary showing:
 * Remote-verification step completed
 * Your Full Name visible in the pipeline output
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a2-task5-pipeline-succeeded.png)
 
 ---
 
@@ -136,7 +136,7 @@ Add a browser screenshot showing:
 * Your Full Name
 * Updated website content after the automatic deployment
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a2-task6-website-updated.png)
 
 ## Final Website URL
 
@@ -144,7 +144,7 @@ Add your screenshot here.
 
 Replace the placeholder with your actual website URL:
 
-[Paste your final website URL here]
+http://16.192.68.170
 
 ---
 
@@ -152,7 +152,13 @@ Replace the placeholder with your actual website URL:
 
 Write a short summary of the completed CI/CD workflow.
 
-[Write your summary here.]
+I imported the Azure Static Website into Azure Repos in my DMI-Week10 project and put my name in the site's footer. With Terraform I created an Ubuntu 24.04 t3.micro EC2 instance in eu-north-1, with an Elastic IP so the address stays the same, and a security group that allows HTTP from anywhere but SSH only from my own IP and from my self-hosted agent's IP. I checked the instance's SSH host key against the EC2 console output before connecting.
+
+With Ansible I installed Nginx and created a deploy user that is in the www-data group, owns /var/www/html, and logs in with a dedicated RSA key only, with no password and no sudo. A second playbook run reported changed=0.
+
+In Azure DevOps I created an SSH service connection (ec2-static-site-ssh) that uses the deploy user and its private key, and a YAML pipeline that runs on my self-hosted agent in SelfHostedPool for pushes to any branch. The pipeline checks out the repo, prints the run details and my name, copies only the site files to /var/www/html with CopyFilesOverSSH@0 (it cleans the folder first and leaves out .git, the README and the pipeline file), and then uses SSH@0 to list the web root, confirm my name is in index.html and check that Nginx returns 200.
+
+To test the trigger I changed the heading from Cohort 2 to Cohort 3 and pushed. The pipeline started by itself as Individual CI and the live site showed the change about a minute later. http://16.192.68.170/.git/config returns 404, so the repo history is not exposed. The service connection username is stored as a secret, so Azure DevOps shows it as *** in the pipeline logs.
 
 ---
 
@@ -167,11 +173,11 @@ Add a screenshot of your LinkedIn post containing:
 * Three to five lines describing the CI/CD workflow
 * A screenshot of the successful pipeline or deployed website
 
-Add your screenshot here.
+![LinkedIn Post](screenshots/a2-linkedin-post.png)
 
 ## LinkedIn Post URL
 
-[Paste your public LinkedIn post URL here]
+https://www.linkedin.com/feed/update/urn:li:activity:7513572821503987712/
 
 > Do not expose AWS credentials, SSH private keys, passwords, PATs, or other sensitive information.
 
