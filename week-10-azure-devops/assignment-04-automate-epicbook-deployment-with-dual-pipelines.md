@@ -70,7 +70,7 @@ Add a screenshot of the Infrastructure Pipeline run showing:
 * `backend_private_ip`
 * `mysql_fqdn`
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a4-task4-infra-pipeline.png)
 
 > Do not expose the MySQL password, Client Secret, Terraform state, SSH private key, or another sensitive value.
 
@@ -86,7 +86,7 @@ Add a screenshot of the Azure Portal Resource Group overview showing:
 * Azure Database for MySQL Flexible Server
 * Related EpicBook resources
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a4-task4-azure-resources.png)
 
 > Hide sensitive IDs, credentials, and database details.
 
@@ -124,7 +124,7 @@ Run the Application Pipeline to configure the VMs, deploy EpicBook, and verify t
 
 Add a screenshot of the Application Pipeline run summary showing all required stages or jobs succeeded.
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a4-task7-app-pipeline.png)
 
 ---
 
@@ -137,7 +137,7 @@ Add a screenshot of the Application Pipeline log showing:
 * Zero failed hosts
 * Zero unreachable hosts
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a4-task7-play-recap.png)
 
 > Do not expose the SSH private key, MySQL password, Client Secret, or complete database connection string.
 
@@ -162,7 +162,7 @@ Add a browser screenshot showing:
 
 The screenshot may show a product, cart, or successful order view.
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a4-task8-epicbook-live.png)
 
 > Do not expose credentials or sensitive information.
 
@@ -172,15 +172,15 @@ Add your screenshot here.
 
 ## Frontend Application URL
 
-[Paste your final EpicBook application URL here.]
+http://4.225.168.136
 
 ## Infrastructure Repository URL
 
-[Paste your Infrastructure Repository URL here.]
+https://github.com/Kingjaiyee/infra-epicbook
 
 ## Application Repository URL
 
-[Paste your Application Repository URL here.]
+https://github.com/Kingjaiyee/theepicbook
 
 ---
 
@@ -188,7 +188,9 @@ Add your screenshot here.
 
 Write a short explanation of why separate Infrastructure and Application Repositories were used.
 
-[Write your explanation here.]
+The infrastructure and the application change at different speeds and need different levels of control. infra-epicbook holds only the Terraform code and its pipeline. Those changes are rare and can create or destroy servers and the database, so every Apply waits for a manual approval and uses the exact plan that was reviewed. theepicbook holds the application code, the Ansible roles and their pipeline. Those changes are frequent and safe to deploy on every push to main.
+
+Keeping them apart also keeps access apart. Only the Infrastructure Pipeline can use the Azure service connection, and only the Application Pipeline can use the SSH key in Secure Files. An application change can never alter the network, the security rules or the database server, and each repository has its own clear history of who changed what.
 
 ---
 
@@ -201,7 +203,9 @@ Write a short explanation of how the following non-sensitive Terraform outputs w
 * `backend_private_ip`
 * `mysql_fqdn`
 
-[Write your explanation here.]
+After the Infrastructure Pipeline's Apply stage finished, I copied the four values from its log by hand into the Application Repository. app_public_ip and backend_ansible_host became the ansible_host values for the frontend and backend groups in ansible/inventory/hosts.ini. backend_private_ip and mysql_fqdn went into ansible/group_vars/all.yml, where the frontend role uses the private IP as the Nginx proxy target and the database and backend roles use the FQDN to reach MySQL.
+
+I also read each VM's SSH host key through Azure Run Command and committed them as ansible/known_hosts, so Ansible on my laptop and on the pipeline agent only connects to the real servers. Before committing, I checked the handoff from my laptop: both hosts answered an Ansible ping, and the backend resolved the MySQL name to a private 10.30.3.x address. No password, private key, client secret or Terraform state moved between the repositories. Those stay in the variable group, Secure Files, the service connection and the Azure Storage backend.
 
 ---
 
@@ -216,11 +220,11 @@ Add a screenshot of your LinkedIn post showing:
 * Post text
 * At least one image or link
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a4-linkedin-post.png)
 
 ## LinkedIn Post URL
 
-[Paste your public LinkedIn post URL here.]
+https://www.linkedin.com/feed/update/urn:li:activity:7513636429579886596/
 
 Your post must include:
 
