@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash pipeline-triage.sh)",
+      "Read",
+      "Grep"
+    ],
+    "deny": [
+      "Edit",
+      "Write",
+      "NotebookEdit",
+      "WebFetch",
+      "Bash(az:*)",
+      "Bash(curl:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(terraform:*)",
+      "Bash(ansible:*)",
+      "Bash(ansible-playbook:*)",
+      "Bash(rm:*)",
+      "Bash(bash -x:*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.azure/**)",
+      "Read(~/.config/**)",
+      "Read(~/.aws/**)",
+      "Bash(env:*)",
+      "Bash(printenv:*)",
+      "Bash(echo:*)",
+      "Bash(cat:*)"
+    ]
+  }
+}

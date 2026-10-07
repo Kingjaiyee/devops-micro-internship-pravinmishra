@@ -1,0 +1,42 @@
+========================================
+CI/CD Pipeline Failure Triage Report
+========================================
+Full Name: Victor Durojaiye
+Timestamp: 2026-10-07T19:57:06Z
+Provider: Azure DevOps
+Organization: https://dev.azure.com/victordurojaiye2000
+Project: DMI-Week10
+
+Category matches are heuristic evidence; counts represent findings.
+----------------------------------------
+Infrastructure Pipeline (Pipeline ID: 16)
+----------------------------------------
+Run ID: 57
+Branch: refs/heads/main
+Status: completed
+Result: succeeded
+Completion Time: 2026-10-07T14:54:58.996127+00:00
+[PASS] Infrastructure Pipeline — Latest completed run succeeded
+
+----------------------------------------
+Application Pipeline (Pipeline ID: 17)
+----------------------------------------
+Run ID: 60
+Branch: refs/heads/drill/pipeline-failure
+Status: completed
+Result: failed
+Completion Time: 2026-10-07T17:26:22.477485+00:00
+Retrieving step console logs for build 60 ...
+[FAIL] Application Pipeline — Unclassified Pipeline Failure (Azure DevOps reported failure but no known pattern matched retrieved log text; manual log review required — root cause not confirmed)
+
+
+Summary:
+PASS: 1
+WARN: 0
+FAIL: 1
+ERROR: 0
+Overall Status: FAIL
+Script Exit Code: 2
+Report File: /home/kingjaiye/pipeline-triage/reports/pipeline-health-report.txt
+Infrastructure Log: /home/kingjaiye/pipeline-triage/reports/infra-last-run.log
+Application Log: /home/kingjaiye/pipeline-triage/reports/app-last-run.log
