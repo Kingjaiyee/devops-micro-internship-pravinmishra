@@ -37,7 +37,7 @@ Add a screenshot of Azure Repos showing:
 * `main` branch
 * Project files
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a3-task1-repo-imported.png)
 
 ---
 
@@ -81,7 +81,7 @@ Add a screenshot of the Azure Pipeline YAML open in the editor showing:
 * Publish stage
 * Deploy stage
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a3-task4-pipeline-yaml.png)
 
 > Do not expose passwords, private keys, tokens, or cloud credentials.
 
@@ -104,7 +104,7 @@ Add a screenshot of one Azure DevOps pipeline run showing all four stages succee
 * Publish
 * Deploy
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a3-task5-pipeline-stages.png)
 
 ---
 
@@ -122,7 +122,7 @@ Add a screenshot of the pipeline SSH verification log or VM terminal showing the
 
 `/var/www/html`
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a3-task6-webroot-contents.png)
 
 ---
 
@@ -143,7 +143,7 @@ Add a browser screenshot showing:
 * Your Full Name
 * Deployment date
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a3-task7-react-app-live.png)
 
 ## Final Application URL
 
@@ -151,7 +151,7 @@ Add your screenshot here.
 
 Replace the placeholder and paste your final application URL below:
 
-[Paste your final application URL here.]
+http://13.61.109.106
 
 ---
 
@@ -159,7 +159,11 @@ Replace the placeholder and paste your final application URL below:
 
 Write a short explanation of the CI/CD workflow you created.
 
-[Write your summary here.]
+I imported the React app into Azure Repos in my DMI-Week10 project and set "Deployed by" to my name and the date to 07/10/2026 in src/App.js. Terraform created a new Ubuntu 24.04 t3.micro EC2 instance with an Elastic IP and a security group that allows HTTP from anywhere but SSH only from my own IP and from my self-hosted agent. Ansible installed Nginx, configured it for React routing with try_files so routes like /about load index.html, and created a webdeploy user that owns /var/www/html and logs in with a dedicated key only. The pipeline reaches the server through an SSH service connection that holds that key, so no password or key is in the YAML.
+
+The pipeline runs on my self-hosted agent whenever a commit lands on main and has four stages, each running only if the previous one succeeded. Build installs Node.js 22, runs npm ci and npm run build, and saves the build folder as the react-build artifact. Test runs the unit tests in CI mode. Publish downloads react-build, checks that index.html and the static folder are there and that no src, node_modules or package.json is included, and publishes it as react-release. Deploy downloads react-release, copies it to /var/www/html with CopyFilesOverSSH (cleaning out old files first), and then uses SSH to list the web root, confirm Nginx is active, find my name in the deployed JavaScript bundle and check that both / and /about return 200.
+
+To test the trigger I added a line to the home page and committed to main. The pipeline started by itself as Individual CI, all four stages passed, and the new line was live a few minutes later.
 
 ---
 
@@ -174,11 +178,11 @@ Add a screenshot of your LinkedIn post showing:
 * Post text
 * At least one image or link
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a3-linkedin-post.png)
 
 ## LinkedIn Post URL
 
-[Paste your public LinkedIn post URL here.]
+https://www.linkedin.com/feed/update/urn:li:activity:7513587054212124672/
 
 > Do not expose VM passwords, tokens, private keys, cloud credentials, or other sensitive information.
 
