@@ -28,7 +28,7 @@ Add a screenshot of the cloud console showing:
 - SSH port 22 enabled from your IP address
 - HTTP port 80 enabled from Anywhere
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a1-task1-vm-overview.png)
 
 ---
 
@@ -50,7 +50,7 @@ cat /var/log/cloud-init-output.log
 
 The visible output must show Docker installation activity.
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a1-task2-cloud-init-log.png)
 
 ---
 
@@ -76,7 +76,7 @@ and
 docker ps
 ```
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a1-task3-docker-version-ps.png)
 
 ---
 
@@ -92,7 +92,7 @@ Download the static website source code.
 
 Add a screenshot of the terminal showing the contents of the `Azure-Static-Website` project directory after cloning the repository.
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a1-task4-project-files.png)
 
 ---
 
@@ -114,7 +114,7 @@ cat Dockerfile
 
 The Dockerfile must use `nginx:alpine`, copy the website files to the Nginx web root, and expose port 80.
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a1-task5-dockerfile.png)
 
 ---
 
@@ -136,7 +136,7 @@ docker images
 
 The output must include the `static-site` image with the `latest` tag.
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a1-task6-docker-images.png)
 
 ---
 
@@ -162,7 +162,7 @@ The output must show the running `static-site` container with the port mapping:
 0.0.0.0:80->80/tcp
 ```
 
-Add your screenshot here.
+![Screenshot 7](screenshots/a1-task7-docker-ps.png)
 
 ---
 
@@ -182,7 +182,7 @@ Add a screenshot of the terminal showing the output of:
 curl ifconfig.me
 ```
 
-Add your screenshot here.
+![Screenshot 8](screenshots/a1-task8-public-ip.png)
 
 ---
 
@@ -192,13 +192,13 @@ Add a screenshot of the browser showing the deployed static website.
 
 Ensure that the VM public IP address is visible in the browser address bar.
 
-Add your screenshot here.
+![Screenshot 9](screenshots/a1-task8-browser-site.png)
 
 ---
 
 # Public Application URL
 
-**VM Public IP / Application URL:** `Add your application URL here`
+**VM Public IP / Application URL:** `http://16.192.221.42`
 
 ---
 
@@ -210,11 +210,11 @@ Create a LinkedIn post describing what you deployed, the deployment process, and
 
 ### Evidence
 
-**LinkedIn Post URL:** `Add your LinkedIn Post URL here`
+**LinkedIn Post URL:** `https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-aws-share-7514391125995016192-vETH`
 
 #### LinkedIn Post Screenshot
 
-Add a screenshot of the published LinkedIn post here.
+![LinkedIn Post](screenshots/a1-linkedin-post.png)
 
 ---
 
@@ -230,21 +230,21 @@ Add a screenshot of the published LinkedIn post here.
 
 # Completion Checklist
 
-- [ ] Cloud VM provisioned successfully
-- [ ] Public IP enabled
-- [ ] SSH port 22 restricted to my IP address
-- [ ] HTTP port 80 enabled from Anywhere
-- [ ] Docker installed using Cloud-Init
-- [ ] Cloud-Init Docker installation log captured
-- [ ] Docker installation verified
-- [ ] Static website repository cloned
-- [ ] Dockerfile created and verified
-- [ ] Docker image built successfully
-- [ ] Docker container is running with port 80 mapped
-- [ ] Website is accessible through the VM public IP
-- [ ] All required screenshots included
-- [ ] Full name visible in required screenshots
-- [ ] No sensitive information exposed
+- [x] Cloud VM provisioned successfully
+- [x] Public IP enabled
+- [x] SSH port 22 restricted to my IP address
+- [x] HTTP port 80 enabled from Anywhere
+- [x] Docker installed using Cloud-Init
+- [x] Cloud-Init Docker installation log captured
+- [x] Docker installation verified
+- [x] Static website repository cloned
+- [x] Dockerfile created and verified
+- [x] Docker image built successfully
+- [x] Docker container is running with port 80 mapped
+- [x] Website is accessible through the VM public IP
+- [x] All required screenshots included
+- [x] Full name visible in required screenshots
+- [x] No sensitive information exposed
 
 ---
 
