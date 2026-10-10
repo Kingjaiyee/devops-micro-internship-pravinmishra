@@ -30,7 +30,7 @@ cat .dockerignore
 
 The file must exclude `node_modules`, `build`, and `.env`.
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a2-task1-dockerignore.png)
 
 ---
 
@@ -46,7 +46,7 @@ Create a baseline single-stage Docker image and run the application on port 3000
 
 Add a screenshot showing the completed `Dockerfile.single`.
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a2-task2-dockerfile-single.png)
 
 ---
 
@@ -60,7 +60,7 @@ http://localhost:3000
 
 Ensure that your full name is visible in the application.
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a2-task2-browser-3000.png)
 
 ---
 
@@ -76,7 +76,7 @@ Create an optimized multi-stage Docker image with separate builder and Nginx run
 
 Add a screenshot showing the completed multi-stage `Dockerfile`.
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a2-task3-dockerfile-multistage.png)
 
 ---
 
@@ -90,7 +90,7 @@ http://localhost
 
 Ensure that your full name is visible in the application.
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a2-task3-browser-80.png)
 
 ---
 
@@ -117,7 +117,7 @@ react-single:latest
 react-multistage:latest
 ```
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a2-task4-docker-images.png)
 
 ---
 
@@ -126,15 +126,15 @@ Add your screenshot here.
 Record the image sizes and calculate the reduction using the same unit for both images.
 
 ```text
-Single-stage image size: Add size here
+Single-stage image size: 532 MB
 
-Multi-stage image size: Add size here
+Multi-stage image size: 26.6 MB
 
 Percentage reduction =
 ((Single-stage image size − Multi-stage image size)
 ÷ Single-stage image size) × 100
 
-Percentage reduction: Add result here
+Percentage reduction: ((532 − 26.6) ÷ 532) × 100 = (505.4 ÷ 532) × 100 = 95.0%
 ```
 
 ---
@@ -156,7 +156,17 @@ Write a short analysis of 5–8 lines covering:
 - How smaller images improve image pull and deployment speed
 - One Docker build-caching optimization you used
 
-Write your analysis here.
+The single-stage image (react-single:latest) is 532 MB and the multi-stage image (react-multistage:latest) is 26.6 MB, both measured by CONTENT SIZE.
+
+That is a 95.0% reduction, so the single-stage image is 20 times larger.
+
+The runtime image only holds Nginx on Alpine and the built static files. Node.js, npm, the source code and node_modules stay behind in the builder stage.
+
+Fewer packages means a smaller attack surface: vulnerabilities in the build dependencies never reach the running container, and there is no Node runtime or npm in it to abuse.
+
+A 26.6 MB image is much less data to push and pull, so new servers, scaling and rollbacks start faster, and the registry stores less.
+
+For build caching I copied package*.json and ran npm ci before COPY . ., so a code-only change reuses the cached dependency layer, and the .dockerignore keeps node_modules, build and .git out of the build context.
 
 ---
 
@@ -177,6 +187,13 @@ You may choose to:
 
 Screenshots are optional.
 
+- Moved the builder stage from node:18-alpine (end of life) to node:22-alpine. git diff shows a one-line change. The baseline uses node:22 instead of node:20 (end of life) for the same reason.
+- Built react-multistage:v2 from a separate Dockerfile.optimized, so the main Dockerfile stays as submitted.
+- Health check: busybox wget against 127.0.0.1, already in nginx:alpine, so no extra package. The container reports healthy.
+- Cache headers in a custom nginx.conf: hashed files under /static/ get "public, max-age=31536000, immutable", index.html gets "no-cache" so new releases show up. Added an SPA fallback, so client routes like /about return 200.
+- Size: react-multistage:v2 is 26.6 MB, the same as react-multistage:latest, so the health check and config added no measurable size.
+- The rebuild reused the cached npm ci layer; only the source copy and npm run build ran again.
+
 ---
 
 # LinkedIn Requirement
@@ -191,13 +208,13 @@ Create a LinkedIn post describing what you built, what a multi-stage Docker buil
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
+`https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-react-share-7514664865915977728-YuPK/`
 
 ---
 
 #### LinkedIn Post Screenshot
 
-Add a screenshot of the published LinkedIn post here.
+![LinkedIn Post](screenshots/a2-linkedin-post.png)
 
 ---
 
@@ -214,18 +231,18 @@ Add a screenshot of the published LinkedIn post here.
 
 # Completion Checklist
 
-- [ ] Assignment completed locally
-- [ ] `.dockerignore` created and verified (Screenshot 1)
-- [ ] `Dockerfile.single` created (Screenshot 2)
-- [ ] Single-stage container verified in the browser (Screenshot 3)
-- [ ] Multi-stage `Dockerfile` created (Screenshot 4)
-- [ ] Multi-stage container verified in the browser (Screenshot 5)
-- [ ] Both Docker image sizes captured (Screenshot 6)
-- [ ] Percentage reduction calculated
-- [ ] Optimization analysis completed
-- [ ] LinkedIn post URL and screenshot included
-- [ ] Full name visible in all required screenshots
-- [ ] No sensitive information exposed
+- [x] Assignment completed locally
+- [x] `.dockerignore` created and verified (Screenshot 1)
+- [x] `Dockerfile.single` created (Screenshot 2)
+- [x] Single-stage container verified in the browser (Screenshot 3)
+- [x] Multi-stage `Dockerfile` created (Screenshot 4)
+- [x] Multi-stage container verified in the browser (Screenshot 5)
+- [x] Both Docker image sizes captured (Screenshot 6)
+- [x] Percentage reduction calculated
+- [x] Optimization analysis completed
+- [x] LinkedIn post URL and screenshot included
+- [x] Full name visible in all required screenshots
+- [x] No sensitive information exposed
 
 ---
 
