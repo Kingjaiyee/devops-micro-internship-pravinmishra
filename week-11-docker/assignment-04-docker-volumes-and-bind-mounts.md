@@ -26,7 +26,7 @@ Add a screenshot of the terminal showing successful completion of:
 docker pull nginx:alpine
 ```
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a4-s01-pull-nginx.png)
 
 ---
 
@@ -38,7 +38,7 @@ Add a screenshot of the terminal showing the created host directory:
 $HOME/nginx-logs
 ```
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a4-s02-host-log-dir.png)
 
 ---
 
@@ -56,7 +56,7 @@ The output must show the `myweb` container with:
 0.0.0.0:80->80/tcp
 ```
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a4-s03-myweb-ps.png)
 
 ---
 
@@ -70,7 +70,9 @@ http://<YOUR-VM-PUBLIC-IP>
 
 Ensure that the VM public IP is visible in the address bar. Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a4-s04-browser-myweb.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -84,7 +86,7 @@ $HOME/nginx-logs
 
 The output must show `access.log`, `error.log`, and an access-log entry created when you opened the Nginx page.
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a4-s05-bind-mounted-logs.png)
 
 ---
 
@@ -97,7 +99,7 @@ docker stop myweb
 docker rm myweb
 ```
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a4-s06-myweb-removed.png)
 
 ---
 
@@ -111,7 +113,7 @@ $HOME/nginx-logs
 
 The access log must retain its content after the container has been removed.
 
-Add your screenshot here.
+![Screenshot 7](screenshots/a4-s07-logs-persist.png)
 
 ---
 
@@ -127,7 +129,7 @@ Deploy backend and frontend containers that share data through a named Docker Vo
 
 Add a screenshot of the terminal showing the `two-tier-app` project structure, including separate `backend` and `frontend` directories with a `Dockerfile` and `index.js` file in each.
 
-Add your screenshot here.
+![Screenshot 8](screenshots/a4-s08-project-structure.png)
 
 ---
 
@@ -139,7 +141,7 @@ Add a screenshot of the terminal showing `mynetwork` in:
 docker network ls
 ```
 
-Add your screenshot here.
+![Screenshot 9](screenshots/a4-s09-mynetwork.png)
 
 ---
 
@@ -151,7 +153,7 @@ Add a screenshot of the terminal showing `shared-data` in:
 docker volume ls
 ```
 
-Add your screenshot here.
+![Screenshot 10](screenshots/a4-s10-shared-data-volume.png)
 
 ---
 
@@ -159,7 +161,7 @@ Add your screenshot here.
 
 Add a screenshot of the terminal showing the completed backend `Dockerfile`.
 
-Add your screenshot here.
+![Screenshot 11](screenshots/a4-s11-backend-dockerfile.png)
 
 ---
 
@@ -167,7 +169,7 @@ Add your screenshot here.
 
 Add a screenshot of the terminal showing successful completion of the `backend-app:latest` image build.
 
-Add your screenshot here.
+![Screenshot 12](screenshots/a4-s12-backend-build.png)
 
 ---
 
@@ -181,7 +183,7 @@ docker ps
 
 The output must show the running `backend` container.
 
-Add your screenshot here.
+![Screenshot 13](screenshots/a4-s13-backend-ps.png)
 
 ---
 
@@ -189,7 +191,7 @@ Add your screenshot here.
 
 Add a screenshot of the terminal showing the completed frontend `Dockerfile`.
 
-Add your screenshot here.
+![Screenshot 14](screenshots/a4-s14-frontend-dockerfile.png)
 
 ---
 
@@ -197,7 +199,7 @@ Add your screenshot here.
 
 Add a screenshot of the terminal showing successful completion of the `frontend-app:latest` image build.
 
-Add your screenshot here.
+![Screenshot 15](screenshots/a4-s15-frontend-build.png)
 
 ---
 
@@ -215,7 +217,7 @@ The output must show both `backend` and `frontend` containers running. Only `fro
 0.0.0.0:80->80/tcp
 ```
 
-Add your screenshot here.
+![Screenshot 16](screenshots/a4-s16-backend-frontend-ps.png)
 
 ---
 
@@ -229,7 +231,7 @@ The output must include:
 Data written: Hello from Backend!
 ```
 
-Add your screenshot here.
+![Screenshot 17](screenshots/a4-s17-backend-write.png)
 
 ---
 
@@ -243,7 +245,9 @@ Hello from Backend!
 
 Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 18](screenshots/a4-s18-browser-hello.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -257,7 +261,9 @@ Test Data 1
 
 Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 19](screenshots/a4-s19-browser-test-data-1.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -271,7 +277,9 @@ Test Data 2 - New Update
 
 Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 20](screenshots/a4-s20-browser-test-data-2.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -279,7 +287,7 @@ Add your screenshot here.
 
 Add a screenshot of the terminal showing the `frontend` and `backend` containers removed and recreated using the same `shared-data` Docker Volume.
 
-Add your screenshot here.
+![Screenshot 21](screenshots/a4-s21-remove-recreate.png)
 
 ---
 
@@ -295,7 +303,9 @@ This proves that the `shared-data` Docker Volume outlived both application conta
 
 Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 22](screenshots/a4-s22-browser-after-recreate.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -308,13 +318,19 @@ Write a short explanation covering:
 - How Task 2 proved Docker Volume persistence
 - Why Docker Volumes are commonly used for application data
 
-Write your explanation here.
+**Bind mount vs Docker volume.** A bind mount maps a host folder I choose into the container. In Task 1 that was `$HOME/nginx-logs` mapped to `/var/log/nginx`. A Docker volume is storage that Docker creates and manages by name. `shared-data` lives under `/var/lib/docker/volumes/shared-data/_data`, and I never had to pick or create that folder. Docker also fills an empty volume from the image on first mount, which is how `/data` came out owned by the non-root `node` user.
+
+**How Task 1 proved bind mount persistence.** Nginx wrote `access.log` and `error.log` straight into `$HOME/nginx-logs` on the VM, owned by `root:root` with mode 644, because the Nginx master runs as root. After `docker stop` and `docker rm`, `docker ps -a` showed no `myweb`, but both files and my `GET /` line were still on the host. One side effect: the mount hides the image's links from the log files to stdout. A test container logged 0 requests in `docker logs` and 1 in `access.log`.
+
+**How Task 2 proved volume persistence.** The backend wrote "Hello from Backend!" to `/data/message.txt`, and the frontend served the same file, because both mount `shared-data`. Updates to "Test Data 1" and "Test Data 2 - New Update" showed on a browser refresh. I then removed both containers, confirmed `shared-data` was still listed, and created new ones. The page still showed "Test Data 2 - New Update", so the data outlived both containers. The frontend mounts the volume read-only: a write attempt failed with "Read-only file system". Both containers run as the non-root `node` user.
+
+**Why volumes are used for application data.** A volume's lifecycle is separate from any container. It's managed with Docker commands (`create`, `ls`, `inspect`, `rm`), it doesn't depend on the host's folder layout or file permissions, and several containers can share it. Bind mounts suit cases where the host needs direct access to the files, like reading logs. Volumes suit data the application owns.
 
 ---
 
 # Public Application URL
 
-**Application URL:** `Add your VM public IP URL here`
+**Application URL:** `http://51.20.196.139`
 
 ---
 
@@ -330,13 +346,13 @@ Create a LinkedIn post about Docker Volumes and Bind Mounts, including one diffe
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
+`https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-dockervolumes-share-7515523159320834049-lGWp`
 
 ---
 
 #### LinkedIn Post Screenshot
 
-Add a screenshot of the published LinkedIn post here. Include a screenshot of the application displaying shared data.
+![LinkedIn Post](screenshots/a4-linkedin-post.png)
 
 ---
 
@@ -355,26 +371,26 @@ Add a screenshot of the published LinkedIn post here. Include a screenshot of th
 
 # Completion Checklist
 
-- [ ] Nginx image pulled successfully
-- [ ] Host log directory created
-- [ ] Bind Mount configured successfully
-- [ ] Nginx logs remain after container removal
-- [ ] Custom Docker network created
-- [ ] Docker Volume created
-- [ ] Backend Dockerfile and image created
-- [ ] Frontend Dockerfile and image created
-- [ ] Both containers mount `shared-data`
-- [ ] Backend writes data to the Docker Volume
-- [ ] Frontend reads the same data from the Docker Volume
-- [ ] Updated data appears after browser refresh
-- [ ] Data remains after frontend and backend containers are removed and recreated
-- [ ] All required screenshots included
-- [ ] Storage Persistence Notes completed
-- [ ] Public application URL included
-- [ ] LinkedIn post URL and screenshot included
-- [ ] Full name visible in terminal screenshots
-- [ ] Browser screenshots have full-name captions
-- [ ] No sensitive information exposed
+- [x] Nginx image pulled successfully
+- [x] Host log directory created
+- [x] Bind Mount configured successfully
+- [x] Nginx logs remain after container removal
+- [x] Custom Docker network created
+- [x] Docker Volume created
+- [x] Backend Dockerfile and image created
+- [x] Frontend Dockerfile and image created
+- [x] Both containers mount `shared-data`
+- [x] Backend writes data to the Docker Volume
+- [x] Frontend reads the same data from the Docker Volume
+- [x] Updated data appears after browser refresh
+- [x] Data remains after frontend and backend containers are removed and recreated
+- [x] All required screenshots included
+- [x] Storage Persistence Notes completed
+- [x] Public application URL included
+- [x] LinkedIn post URL and screenshot included
+- [x] Full name visible in terminal screenshots
+- [x] Browser screenshots have full-name captions
+- [x] No sensitive information exposed
 
 ---
 
