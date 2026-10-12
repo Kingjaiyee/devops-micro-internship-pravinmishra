@@ -28,7 +28,7 @@ docker network ls
 
 The output must include the default `bridge`, `host`, and `none` networks.
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a3-s01-network-ls.png)
 
 ---
 
@@ -40,7 +40,7 @@ Add a screenshot of the terminal showing successful completion of:
 docker pull nginx:alpine
 ```
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a3-s02-pull-nginx.png)
 
 ---
 
@@ -58,7 +58,7 @@ The output must show the running `myweb` container with:
 0.0.0.0:80->80/tcp
 ```
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a3-s03-myweb-ps.png)
 
 ---
 
@@ -72,7 +72,9 @@ http://<YOUR-VM-PUBLIC-IP>
 
 Ensure that the VM public IP is visible in the address bar. Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a3-s04-browser-myweb.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -92,7 +94,7 @@ Add a screenshot of the terminal showing `mynetwork` in:
 docker network ls
 ```
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a3-s05-mynetwork-created.png)
 
 ---
 
@@ -106,7 +108,7 @@ docker ps
 
 The output must show both `web` and `client` containers running without published host ports.
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a3-s06-web-client-ps.png)
 
 ---
 
@@ -120,7 +122,7 @@ docker exec client wget -qO- http://web
 
 The output must display the Nginx Welcome Page HTML.
 
-Add your screenshot here.
+![Screenshot 7](screenshots/a3-s07-service-discovery.png)
 
 ---
 
@@ -134,7 +136,7 @@ docker network inspect mynetwork
 
 The output must show both `web` and `client` connected to `mynetwork`.
 
-Add your screenshot here.
+![Screenshot 8](screenshots/a3-s08-inspect-mynetwork.png)
 
 ---
 
@@ -156,7 +158,7 @@ docker network ls
 
 The output must include both `frontend-network` and `backend-network`.
 
-Add your screenshot here.
+![Screenshot 9](screenshots/a3-s09-two-networks.png)
 
 ---
 
@@ -174,7 +176,7 @@ The output must show:
 - `backend` without a published host port
 - `db` without a published host port
 
-Add your screenshot here.
+![Screenshot 10](screenshots/a3-s10-multi-network-ps.png)
 
 ---
 
@@ -188,7 +190,7 @@ docker network inspect frontend-network
 
 The output must show `frontend` and `backend`.
 
-Add your screenshot here.
+![Screenshot 11](screenshots/a3-s11-inspect-frontend-network.png)
 
 ---
 
@@ -202,7 +204,7 @@ docker network inspect backend-network
 
 The output must show `backend` and `db`.
 
-Add your screenshot here.
+![Screenshot 12](screenshots/a3-s12-inspect-backend-network.png)
 
 ---
 
@@ -216,7 +218,7 @@ docker exec frontend wget -qO- http://backend
 
 The output must display the Nginx Welcome Page HTML.
 
-Add your screenshot here.
+![Screenshot 13](screenshots/a3-s13-frontend-to-backend.png)
 
 ---
 
@@ -224,7 +226,7 @@ Add your screenshot here.
 
 Add a screenshot of the terminal showing a successful connection to `db` on port `27017` from the `backend` container.
 
-Add your screenshot here.
+![Screenshot 14](screenshots/a3-s14-backend-to-db.png)
 
 ---
 
@@ -238,7 +240,7 @@ The output must include:
 Expected result: frontend cannot reach db
 ```
 
-Add your screenshot here.
+![Screenshot 15](screenshots/a3-s15-frontend-db-isolated.png)
 
 ---
 
@@ -252,7 +254,9 @@ http://<YOUR-VM-PUBLIC-IP>
 
 Ensure that the VM public IP is visible in the address bar. Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 16](screenshots/a3-s16-browser-frontend.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -274,7 +278,7 @@ docker ps
 
 The output must show the running `fastapp` container.
 
-Add your screenshot here.
+![Screenshot 17](screenshots/a3-s17-fastapp-ps.png)
 
 ---
 
@@ -292,7 +296,7 @@ The output must confirm:
 "NetworkMode": "host"
 ```
 
-Add your screenshot here.
+![Screenshot 18](screenshots/a3-s18-fastapp-networkmode.png)
 
 ---
 
@@ -306,7 +310,9 @@ http://<YOUR-VM-PUBLIC-IP>
 
 Ensure that the VM public IP is visible in the address bar. Add your full name as a clear caption directly below the screenshot.
 
-Add your screenshot here.
+![Screenshot 19](screenshots/a3-s19-browser-fastapp.png)
+
+**Victor Durojaiye**
 
 ---
 
@@ -319,7 +325,7 @@ docker stop fastapp
 docker rm fastapp
 ```
 
-Add your screenshot here.
+![Screenshot 20](screenshots/a3-s20-fastapp-cleanup.png)
 
 ---
 
@@ -332,7 +338,15 @@ Write a short note explaining:
 - Why the frontend could not access the database in Task 3
 - The difference between bridge mode and host network mode
 
-Write your note here.
+**Default bridge.** A container started without `--network` joins Docker's default `bridge` network. It gets a private IP and reaches the internet through NAT, and outside traffic only reaches it through a published port: myweb used `-p 80:80`, shown as `0.0.0.0:80->80/tcp`. The default bridge has no name lookup. A container on it got `bad address 'probe-target'` when calling another container by name.
+
+**Custom bridge.** A user-defined network like `mynetwork` has Docker's built-in DNS. `client` reached `web` with `wget http://web`, using only the container name, and neither container published a port. Container-to-container traffic doesn't need `-p`; that's only for traffic from outside the host.
+
+**Why the frontend could not reach the database.** `frontend` was only on `frontend-network`, `db` was only on `backend-network`, and `backend` was on both. A container can only reach networks it's attached to. By name, `frontend` got `bad address 'db'`. Even with db's real IP (172.19.0.2), the connection was blocked, so the isolation is at the network level, not just DNS. Only `frontend` published a port. That's also why MongoDB running without authentication was acceptable here: nothing outside `backend-network` can reach it.
+
+**Bridge vs host mode.** In bridge mode each container has its own network namespace and IP, and Docker maps host ports to it. In host mode the container shares the VM's network stack. `fastapp` showed no port mapping in `docker ps`, and `ss` showed nginx listening directly on the VM's port 80, with no docker-proxy in between. Host mode skips NAT, but it gives up isolation, and ports can clash: `frontend` had to be removed first because it was holding port 80.
+
+**Finding.** `mongo:8.0` refused to start on this VM. Its kernel, `7.0.0-1014-aws`, is in the range MongoDB 8 blocks (6.19 to 7.0.13) because of a TCMalloc incompatibility. I used `mongo:7.0` instead. It also showed that a stopped container disappears from Docker DNS and from `docker network inspect`, which is why `backend` first got `bad address 'db'`.
 
 ---
 
@@ -348,13 +362,13 @@ Create a LinkedIn post about the Docker networking modes explored, one key lesso
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
+`https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-networking-share-7515460611489591296-PfUi/`
 
 ---
 
 #### LinkedIn Post Screenshot
 
-Add a screenshot of the published LinkedIn post here.
+![LinkedIn Post](screenshots/a3-linkedin-post.png)
 
 ---
 
@@ -372,24 +386,24 @@ Add a screenshot of the published LinkedIn post here.
 
 # Completion Checklist
 
-- [ ] Completed on a Linux VM or EC2 instance
-- [ ] Docker Engine is running
-- [ ] HTTP port 80 is allowed in the VM firewall or cloud security rules
-- [ ] Default bridge networking verified
-- [ ] Custom bridge network created
-- [ ] Container-name communication verified
-- [ ] `frontend-network` and `backend-network` created
-- [ ] Frontend-to-backend communication verified
-- [ ] Backend-to-database communication verified
-- [ ] Frontend-to-database isolation verified
-- [ ] Only the frontend published port 80 in Task 3
-- [ ] Host network mode verified
-- [ ] All required screenshots included
-- [ ] Networking Notes completed
-- [ ] LinkedIn post URL and screenshot included
-- [ ] Full name visible in terminal screenshots
-- [ ] Browser screenshots include full-name captions
-- [ ] No sensitive information exposed
+- [x] Completed on a Linux VM or EC2 instance
+- [x] Docker Engine is running
+- [x] HTTP port 80 is allowed in the VM firewall or cloud security rules
+- [x] Default bridge networking verified
+- [x] Custom bridge network created
+- [x] Container-name communication verified
+- [x] `frontend-network` and `backend-network` created
+- [x] Frontend-to-backend communication verified
+- [x] Backend-to-database communication verified
+- [x] Frontend-to-database isolation verified
+- [x] Only the frontend published port 80 in Task 3
+- [x] Host network mode verified
+- [x] All required screenshots included
+- [x] Networking Notes completed
+- [x] LinkedIn post URL and screenshot included
+- [x] Full name visible in terminal screenshots
+- [x] Browser screenshots include full-name captions
+- [x] No sensitive information exposed
 
 ---
 
