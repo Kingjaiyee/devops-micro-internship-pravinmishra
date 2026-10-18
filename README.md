@@ -3,7 +3,7 @@
 ![Cohort](https://img.shields.io/badge/Cohort-3-blue?style=for-the-badge)
 ![Program](https://img.shields.io/badge/DevOps_Micro_Internship-Pravin_Mishra-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
-![Weeks](https://img.shields.io/badge/Weeks_Completed-10%2F14-green?style=for-the-badge)
+![Weeks](https://img.shields.io/badge/Weeks_Completed-11%2F14-green?style=for-the-badge)
 
 > 👋 **New here?** Read the [submission instructions](./onboarding) first — how to fork, fill in, and submit your assignments.
 > Find all the required links & assignment guidelines from here [Required links](./dmi_cohort3_resources.md)
@@ -101,7 +101,7 @@ This is not a course. It is an internship-style program — real deployments, re
 [![Week 10 – CI/CD](./badges/week-10.svg)](./week-10-azure-devops/)
 
 <!-- Week 11 → Docker -->
-<!-- [![Week 11 – Docker](./badges/week-11.svg)](./week-11-docker/) -->
+[![Week 11 – Docker](./badges/week-11.svg)](./week-11-docker/)
 
 <!-- Week 12 → Kubernetes -->
 <!-- [![Week 12 – K8s](./badges/week-12.svg)](./week-12-kubernetes/) -->
@@ -141,7 +141,7 @@ This is not a course. It is an internship-style program — real deployments, re
 | 08 | Terraform | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devops-terraform-aws-share-7509612345103507457-_6Ul/) | [Blog Post](https://www.linkedin.com/pulse/week-terraform-stopped-being-syntax-victor-durojaiye-fx5je) |
 | 09 | Ansible | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7511552629177503744/) | [Blog Post](https://www.linkedin.com/pulse/i-taught-ansible-run-my-servers-built-ai-isnt-allowed-durojaiye-kwuwe) |
 | 10 | Azure DevOps (CI/CD) | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-azuredevops-claudecode-share-7513693984439947265-_HIG/) | [Blog Post](https://www.linkedin.com/pulse/i-gave-my-pipelines-own-server-five-assignments-ai-can-durojaiye-cpiie) |
-| 11 | Docker | ⬜ Not Started | ⏳ Pending | — | — |
+| 11 | Docker | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-dockercompose-share-7516996166220181504-AMrC/) | [Blog Post](https://www.linkedin.com/pulse/eight-docker-assignments-checks-caught-me-out-victor-durojaiye-obtue) |
 | 12 | Kubernetes | ⬜ Not Started | ⏳ Pending | — | — |
 | 13 | Final Project | ⬜ Not Started | ⏳ Pending | — | — |
 
