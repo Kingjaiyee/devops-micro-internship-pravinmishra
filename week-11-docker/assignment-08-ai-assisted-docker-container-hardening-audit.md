@@ -12,7 +12,7 @@ In this assignment, you will build a read-only Bash script that audits a running
 
 # Target Container
 
-**Target Container Name:** `Add the exact container name here`
+**Target Container Name:** `epicbook-frontend-1`
 
 ---
 
@@ -33,7 +33,7 @@ docker-audit.sh
 SKILL.md
 ```
 
-Add your screenshot here.
+![Screenshot 1](screenshots/a8-s01-workspace-files.png)
 
 ---
 
@@ -49,7 +49,7 @@ Add the supplied `docker-audit` skill to Claude Code and confirm that it is avai
 
 Add a screenshot of Claude Code showing `docker-audit` in the available skill list.
 
-Add your screenshot here.
+![Screenshot 2](screenshots/a8-s02-skill-listed.png)
 
 ---
 
@@ -70,7 +70,7 @@ Add a terminal screenshot showing:
 - Your full name
 - The usage message displayed when the script runs without a container name
 
-Add your screenshot here.
+![Screenshot 3](screenshots/a8-s03-script-validation.png)
 
 ---
 
@@ -90,7 +90,7 @@ Add a terminal screenshot showing:
 - `docker ps`
 - The audit command using the selected target container name
 
-Add your screenshot here.
+![Screenshot 4](screenshots/a8-s04-target-container.png)
 
 ---
 
@@ -98,7 +98,7 @@ Add your screenshot here.
 
 Add a terminal screenshot showing the initial Docker audit results.
 
-Add your screenshot here.
+![Screenshot 5](screenshots/a8-s05-initial-audit.png)
 
 ---
 
@@ -119,7 +119,7 @@ Add a Claude Code screenshot showing:
 - Recommended manual fix
 - Verification method
 
-Add your screenshot here.
+![Screenshot 6](screenshots/a8-s06-claude-explanation.png)
 
 ---
 
@@ -135,7 +135,7 @@ Manually fix one WARN or FAIL finding from the initial audit.
 
 Add a screenshot of the updated Dockerfile or `docker-compose.yml` showing the selected hardening fix.
 
-Add your screenshot here.
+![Screenshot 7](screenshots/a8-s07-hardening-change.png)
 
 ---
 
@@ -143,7 +143,7 @@ Add your screenshot here.
 
 Add a terminal screenshot showing your full name and the rebuilt or recreated service/container running successfully.
 
-Add your screenshot here.
+![Screenshot 8](screenshots/a8-s08-service-running.png)
 
 ---
 
@@ -163,7 +163,7 @@ Add a terminal screenshot showing:
 - The updated running container
 - The final audit report
 
-Add your screenshot here.
+![Screenshot 9](screenshots/a8-s09-final-audit.png)
 
 ---
 
@@ -176,7 +176,15 @@ Write a short comparison covering:
 - Final audit result
 - Security benefit of the improvement
 
-Write your comparison here.
+**Initial audit finding:** the first audit of `epicbook-frontend-1` returned 5 PASS and 1 WARN. The WARN was `Container user`: the container ran as root, because the `nginx:alpine` base image sets no `USER`.
+
+**Change applied:** I edited `frontend/Dockerfile` by hand to build from `nginxinc/nginx-unprivileged:alpine`, NGINX's official non-root image, and to end with `USER 101`. That image listens on 8080, so I also pointed the Compose health check at `127.0.0.1:8080`, the proxy upstream at `frontend:8080`, and updated the docs. I rebuilt and recreated only the frontend, then reloaded the proxy. The change is on branch `hardening/frontend-non-root`, commit `3cf4328`.
+
+**Final audit result:** 6 of 6 PASS. `Container user` now reads `configured to run as user: 101`, the service is healthy, and pages, assets and `/health` all return 200 through the proxy. A diff of the two reports shows exactly one line changed, WARN to PASS.
+
+**Security benefit:** if nginx is ever exploited, the attacker lands as an unprivileged user instead of root. They can't change the server's own files, install packages or take over the container, which limits the damage and the options for escaping to the host.
+
+Claude explained the risk well, but it could not read the Dockerfile, so its suggested fixes were generic: one copied from a build stage this image does not have, and another would have run stock nginx as non-root, which fails because nginx can't write its PID file and cache folders. I checked each suggestion against the real files before changing anything. Deny rules in `.claude/settings.json` blocked file edits and Docker changes, so every change was mine.
 
 ---
 
@@ -188,13 +196,13 @@ Create a LinkedIn post about the container security checks you performed, one ha
 
 ### Evidence
 
-**LinkedIn Post URL:** `Add your LinkedIn post URL here`
+**LinkedIn Post URL:** `https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-containersecurity-share-7517675559154462720-oeFb/`
 
 #### LinkedIn Post Screenshot
 
 Add a screenshot of the published LinkedIn post, including the final audit result.
 
-Add your screenshot here.
+![LinkedIn Post](screenshots/a8-linkedin-post.png)
 
 ---
 
@@ -210,19 +218,19 @@ Add your screenshot here.
 
 # Completion Checklist
 
-- [ ] Audit workspace created and supplied files verified
-- [ ] `docker-audit` skill added to Claude Code
-- [ ] Audit script validated successfully
-- [ ] Running target container identified
-- [ ] Initial Docker audit completed
-- [ ] Claude Code explanation of findings captured
-- [ ] One hardening fix applied manually
-- [ ] Affected service or container rebuilt and recreated
-- [ ] Final Docker audit completed
-- [ ] Before-and-after comparison completed
-- [ ] Screenshots 1–9 included
-- [ ] LinkedIn post URL and screenshot included
-- [ ] No sensitive information exposed
+- [x] Audit workspace created and supplied files verified
+- [x] `docker-audit` skill added to Claude Code
+- [x] Audit script validated successfully
+- [x] Running target container identified
+- [x] Initial Docker audit completed
+- [x] Claude Code explanation of findings captured
+- [x] One hardening fix applied manually
+- [x] Affected service or container rebuilt and recreated
+- [x] Final Docker audit completed
+- [x] Before-and-after comparison completed
+- [x] Screenshots 1–9 included
+- [x] LinkedIn post URL and screenshot included
+- [x] No sensitive information exposed
 
 ---
 
