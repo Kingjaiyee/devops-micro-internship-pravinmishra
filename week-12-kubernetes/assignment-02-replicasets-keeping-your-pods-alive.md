@@ -10,6 +10,18 @@ In this guided lab, you will create an NGINX ReplicaSet, verify it maintains thr
 
 ---
 
+# Task 0 — Pre-check: Remove the Pod from Assignment 01
+
+## Goal
+
+Confirm that you are connected to your learning cluster and remove the previous standalone Pod to prevent the ReplicaSet from adopting it.
+
+### Evidence
+
+No screenshots required.
+
+---
+
 # Task 1 — Set Up Your Working Directory
 
 ## Goal
@@ -23,6 +35,20 @@ Create the `~/k8s-labs/replicasets` working directory.
 ![ReplicaSets folder](./screenshots/a2-s01-replicasets-folder.png)
 
 **Notes:** I created `~/k8s-labs/replicasets` next to `pods/` in my lab git repo. Before starting, I checked that the context was `docker-desktop` and that no `app=nginx` Pods or ReplicaSets were left from Assignment 1. A leftover Pod with that label would be adopted by the new ReplicaSet and counted as one of its replicas. The solution doc's screenshots use `~/k8s-labs/pods/replicasets`, so I followed the template path instead.
+
+---
+
+### Notes — Template Questions
+
+**1. Why is it useful to keep Kubernetes manifests in organized directories?**
+
+Add your answer here.
+
+---
+
+**2. What file will you create in this directory for this assignment?**
+
+Add your answer here.
 
 ---
 
@@ -42,6 +68,26 @@ Write `nginx-replicaset.yaml` (apiVersion `apps/v1`, kind `ReplicaSet`, 3 replic
 
 ---
 
+### Notes — Template Questions
+
+**1. What does `replicas: 3` mean in this manifest?**
+
+Add your answer here.
+
+---
+
+**2. Why must `selector.matchLabels` match `template.metadata.labels`?**
+
+Add your answer here.
+
+---
+
+**3. What image and image tag are used for the NGINX container?**
+
+Add your answer here.
+
+---
+
 # Task 3 — Test ReplicaSet Auto-Healing
 
 ## Goal
@@ -55,6 +101,26 @@ Delete one Pod managed by `nginx-replicaset` and confirm Kubernetes creates a re
 ![Auto-healing](./screenshots/a2-s03-auto-healing.png)
 
 **Notes:** I deleted `nginx-replicaset-9r7bc`. Its events end with `Killing`. Running `kubectl get pods` straight after the delete already showed the replacement `nginx-replicaset-2st4h` at `1/1 Running`, 1 second old. It started that fast because the image was already on the node. The ReplicaSet events show a fourth `SuccessfulCreate` for `2st4h`, and the count stayed `3 3 3`. I did not create anything by hand. The controller saw 2 Pods where it wanted 3 and made one more from the template.
+
+---
+
+### Notes — Template Questions
+
+**1. What happened after you deleted one Pod?**
+
+Add your answer here.
+
+---
+
+**2. How does the ReplicaSet know that a replacement Pod is needed?**
+
+Add your answer here.
+
+---
+
+**3. What proves that auto-healing worked successfully?**
+
+Add your answer here.
 
 ---
 
@@ -106,20 +172,78 @@ spec:
 
 ---
 
+### Notes — Template Questions
+
+**1. What change did you make to scale the ReplicaSet?**
+
+Add your answer here.
+
+---
+
+**2. Did you manually create the additional Pods? Explain why or why not.**
+
+Add your answer here.
+
+---
+
+**3. What would happen if you changed the replica count from five back to three?**
+
+Add your answer here.
+
+---
+
+# LinkedIn Requirement
+
+Create a LinkedIn post that includes:
+
+- A short explanation of what a Kubernetes ReplicaSet does.
+- What happened when you deleted one NGINX Pod.
+- How Kubernetes automatically created a replacement Pod to maintain the desired replica count.
+- What you learned by changing the replica count from three to five.
+- One screenshot showing either:
+  - Three Pods running after the auto-healing test, or
+  - Five Pods running after scaling the ReplicaSet.
+
+Do not share sensitive information, cluster credentials, tokens, or kubeconfig details in your post.
+
+### Evidence
+
+#### Screenshot 5 — Published LinkedIn post showing your name, the required explanation, and the attached Pod screenshot
+
+Add your screenshot here.
+
+---
+
+### Post Link
+
+Add the URL of your published LinkedIn post here.
+
+---
+
 # Submission Instructions
 
 - Add all required screenshots in your submission
 - Include the completed `nginx-replicaset.yaml` manifest
+- Full Name must be visible in required screenshots.
+- Ensure screenshots are clear and readable.
+- Complete the Notes sections in Tasks 1–4 in your own words.
+- Include the published LinkedIn post URL.
+- Do not expose tokens, passwords, private keys, kubeconfig files, or account IDs.
 
 ---
 
 # Completion Checklist
 
+- [ ] Completed Task 0 and confirmed that the previous `nginx-pod` is no longer listed
 - [x] Task 1: Lab directory created (Screenshot 1)
 - [x] Task 2: ReplicaSet created with three Pods (Screenshot 2)
 - [x] Task 3: Auto-healing observed after deleting a Pod (Screenshot 3)
 - [x] Task 4: Scaled to five Pods and inspected (Screenshot 4)
 - [x] Understood why Deployments are preferred for rolling updates and rollbacks
+- [ ] Completed the Notes — Template Questions in Tasks 1–4
+- [ ] Published the LinkedIn post with the required explanation and Pod screenshot (Screenshot 5)
+- [ ] Included the published LinkedIn post URL
+- [ ] No sensitive data exposed
 
 ---
 

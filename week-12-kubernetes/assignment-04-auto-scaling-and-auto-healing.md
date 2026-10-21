@@ -10,6 +10,18 @@ In this guided lab, you will prove Deployment auto-healing by deleting a Pod, th
 
 ---
 
+# Task 0 — Check the Existing Cluster Resources
+
+## Goal
+
+Confirm that you are connected to your learning cluster and inspect existing Deployments and HPAs.
+
+### Evidence
+
+No screenshots required.
+
+---
+
 # Task 1 — Set Up the Lab Directory
 
 ## Goal
@@ -23,6 +35,20 @@ Create the `~/k8s-labs/autoscaling` working directory.
 ![Autoscaling folder](./screenshots/a4-s01-autoscaling-folder.png)
 
 **Notes:** I created `~/k8s-labs/autoscaling` in my lab git repo. Before starting, I checked that the context was `docker-desktop`, that `default` had no Deployments, HPAs or Pods, and that Metrics Server was not installed yet. The `v1beta1.metrics.k8s.io` APIService was `NotFound` and `kubectl top nodes` returned `Metrics API not available`.
+
+---
+
+### Notes — Template Questions
+
+**1. What is the difference between auto-healing and auto-scaling?**
+
+Add your answer here.
+
+---
+
+**2. Which Kubernetes feature will you use for CPU-based auto-scaling?**
+
+Add your answer here.
 
 ---
 
@@ -63,6 +89,26 @@ spec:
 ```
 
 **Notes:** I applied the Deployment and waited for `rollout status`, then deleted `demo-autohealing-69b848f547-dhg79`. Its events end with `Killing`. Within 4 seconds the ReplicaSet created `demo-autohealing-69b848f547-6ztcm`. That is the third `SuccessfulCreate` in its events, and the Deployment went back to `2/2`. Auto-healing only puts back the count I asked for. It never changes that count. Changing it in response to load is the HPA's job. `image: nginx` has no tag, so this pulls `latest`. I kept it as the lab gives it.
+
+---
+
+### Notes — Template Questions
+
+**1. What happened after you deleted one Pod?**
+
+Add your answer here.
+
+---
+
+**2. What Kubernetes resource maintains the desired replica count for this Deployment?**
+
+Add your answer here.
+
+---
+
+**3. What proves that auto-healing worked?**
+
+Add your answer here.
 
 ---
 
@@ -123,6 +169,44 @@ spec:
 
 ---
 
+### Notes — Template Questions
+
+**1. What does `cpu: "100m"` mean?**
+
+Add your answer here.
+
+---
+
+**2. What is the difference between a CPU request and a CPU limit?**
+
+Add your answer here.
+
+---
+
+**3. Why does CPU-based HPA require CPU requests?**
+
+Add your answer here.
+
+---
+
+**4. Why does HPA need Metrics Server?**
+
+Add your answer here.
+
+---
+
+**5. What issue can occur if Metrics Server is not working?**
+
+Add your answer here.
+
+---
+
+**6. What does `kubectl top pods` help you check?**
+
+Add your answer here.
+
+---
+
 # Task 4 — Create and Inspect the HPA
 
 ## Goal
@@ -162,6 +246,32 @@ spec:
 
 ---
 
+### Notes — Template Questions
+
+**1. What does `minReplicas: 2` mean?**
+
+Add your answer here.
+
+---
+
+**2. What does `maxReplicas: 5` mean?**
+
+Add your answer here.
+
+---
+
+**3. What does `averageUtilization: 50` mean?**
+
+Add your answer here.
+
+---
+
+**4. Why should only one HPA manage a Deployment at a time?**
+
+Add your answer here.
+
+---
+
 # Task 5 — Optionally Generate CPU Load
 
 ## Goal
@@ -182,6 +292,26 @@ Generate CPU load inside an NGINX Pod (`yes > /dev/null`) and monitor whether th
 
 ---
 
+### Notes — Template Questions
+
+**1. Did the HPA change the number of Pods? Explain what you observed.**
+
+Add your answer here.
+
+---
+
+**2. If scaling did not happen, what are two possible reasons?**
+
+Add your answer here, or write “Not applicable — scaling occurred.”
+
+---
+
+**3. Why is automatic scale-down useful after traffic decreases?**
+
+Add your answer here.
+
+---
+
 ### Notes
 
 Write a short note describing what the lab demonstrated.
@@ -192,21 +322,44 @@ Cleanup: I deleted the HPA and both Deployments with `kubectl delete -f` and con
 
 ---
 
+# LinkedIn Requirement
+
+### Evidence
+
+#### Screenshot 6 — Published LinkedIn post showing your name, the required explanation, and the attached Kubernetes screenshot
+
+Add your screenshot here.
+
+#### Linkedin Post Link
+
+Add your link here
+
+---
+
 # Submission Instructions
 
 - Add all required screenshots in your submission
 - Include the completed YAML manifests used in the lab
+- Full Name must be visible in required screenshots.
+- Ensure screenshots are clear and readable.
+- Complete the Notes sections for Tasks 1–4 in your own words.
+- Complete Task 5 notes only if you perform the optional test.
+- Do not expose passwords, tokens, private keys, kubeconfig files, or account IDs.
 
 ---
 
 # Completion Checklist
 
+- [ ] Task 0: Checked the active context and existing cluster resources
 - [x] Task 1: Lab directory created (Screenshot 1)
 - [x] Task 2: Auto-healing observed (Screenshot 2)
 - [x] Task 3: HPA-ready Deployment applied and Metrics Server verified (Screenshot 3)
 - [x] Task 4: HPA created and inspected (Screenshot 4)
 - [x] Task 5: CPU load generated and scaling observed (Screenshot 5, optional)
 - [x] Reflection notes written (Notes)
+- [ ] Completed the Notes — Template Questions for Tasks 1–5
+- [ ] Published the LinkedIn post with the required explanation and attached screenshot (Screenshot 6)
+- [ ] No sensitive data exposed
 
 ---
 

@@ -100,10 +100,51 @@ Run `kubectl describe`, `kubectl logs`, and `kubectl exec -it ... -- /bin/bash` 
 
 ---
 
+# Task 5 — Share Your First Kubernetes Pod on WhatsApp Status
+
+## Goal
+
+Share your Kubernetes learning progress on WhatsApp Status, including your generated DMI leaderboard progress link.
+
+### Steps
+
+1. Go to the DMI Leaderboard.
+2. Find your name and select **Share your progress**.
+3. Click the **WhatsApp icon**.
+4. Copy the automatically generated leaderboard message containing your rank and progress link.
+5. Open WhatsApp and go to **Updates**.
+6. Create a new text Status.
+7. Copy and paste the message below.
+8. Add the generated leaderboard message in the indicated place.
+9. Review and publish your Status.
+
+### WhatsApp Status Message
+
+I created my first Kubernetes Pod as part of my DevOps learning journey! 🚀
+
+Today, I deployed an NGINX Pod using both imperative kubectl commands and a declarative YAML manifest.
+
+I also checked its status, inspected its details, viewed its logs, and accessed the container shell.
+
+[PASTE YOUR GENERATED LEADERBOARD MESSAGE AND LINK HERE]
+
+#DMIByPravinMishra #DevOps #Kubernetes
+
+### Evidence
+
+#### Screenshot 5 — Published WhatsApp Status showing your Kubernetes Pod message and generated DMI leaderboard progress link
+
+Add your screenshot here.
+
+---
+
 # Submission Instructions
 
 - Add all required screenshots in your submission
 - Include the completed `nginx-pod.yaml` manifest
+- Ensure all screenshots are clear and readable.
+- Explain the difference between imperative and declarative Pod creation in your own words.
+- Do not expose passwords, access tokens, or private keys.
 
 ---
 
@@ -114,6 +155,8 @@ Run `kubectl describe`, `kubectl logs`, and `kubectl exec -it ... -- /bin/bash` 
 - [x] Task 3: Pod created declaratively and verified Running (Screenshot 3)
 - [x] Task 4: Pod inspected via describe/logs/exec (Screenshot 4)
 - [x] Understood the difference between imperative and declarative methods
+- [ ] Task 5: Published the WhatsApp Status (Screenshot 5)
+- [ ] No sensitive data exposed
 
 ---
 

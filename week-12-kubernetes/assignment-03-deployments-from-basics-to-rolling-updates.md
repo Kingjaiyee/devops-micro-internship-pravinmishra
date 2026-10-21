@@ -10,6 +10,18 @@ In this guided lab, you will create an NGINX Deployment, add a zero-downtime Rol
 
 ---
 
+# Task 0 — Pre-check: Remove the Assignment 02 ReplicaSet
+
+## Goal
+
+Confirm that you are connected to your learning cluster and remove the previous ReplicaSet and its managed Pods before starting this lab.
+
+### Evidence
+
+No screenshots required.
+
+---
+
 # Task 1 — Set Up the Working Directory
 
 ## Goal
@@ -125,6 +137,46 @@ Scale to five replicas, verify, then scale back to two.
 
 ---
 
+# Task 6 — Share Your Kubernetes Deployment Progress on WhatsApp Status
+
+## Goal
+
+Share your Kubernetes Deployment learning progress on WhatsApp Status, including your generated DMI leaderboard progress link.
+
+### Steps
+
+1. Go to the DMI Leaderboard.
+2. Find your name and select **Share your progress**.
+3. Click the **WhatsApp icon**.
+4. Copy the automatically generated leaderboard message containing your rank and progress link.
+5. Open WhatsApp and go to **Updates**.
+6. Create a new text Status.
+7. Copy and paste the message below.
+8. Insert the generated leaderboard message in the indicated place.
+9. Review and publish your Status.
+
+### WhatsApp Status Message
+
+I practiced Kubernetes Deployments as part of my DevOps learning journey! 🚀
+
+Today, I deployed NGINX, configured rolling updates, updated the container image, and rolled back to the previous version.
+
+I also scaled my Deployment from two Pods to five and back to two!
+
+[PASTE YOUR GENERATED LEADERBOARD MESSAGE AND LINK HERE]
+
+#DMIByPravinMishra #DevOps #Kubernetes
+
+### Evidence
+
+#### Screenshot 6 — Published WhatsApp Status showing your Kubernetes Deployment message and generated DMI leaderboard progress link
+
+Add your screenshot here.
+
+A draft or editing screen is not sufficient.
+
+---
+
 ### Notes
 
 Write a short note describing what the lab demonstrated.
@@ -139,17 +191,23 @@ Cleanup: I deleted the Deployment, which removed both ReplicaSets and the Pods, 
 
 - Add all required screenshots in your submission
 - Include the completed YAML manifests used in the lab
+- Ensure screenshots are clear and readable.
+- Include evidence of your published WhatsApp Status.
+- Do not expose passwords, tokens, private keys, or kubeconfig credentials.
 
 ---
 
 # Completion Checklist
 
+- [ ] Completed Task 0
 - [x] Task 1: Lab directory created (Screenshot 1)
 - [x] Task 2: Two-replica Deployment applied (Screenshot 2)
 - [x] Task 3: RollingUpdate strategy configured (Screenshot 3)
 - [x] Task 4: Image updated and rolled back (Screenshot 4)
 - [x] Task 5: Scaled up and down (Screenshot 5)
 - [x] Reflection notes written (Notes)
+- [ ] Task 6: Published the WhatsApp Status with the generated leaderboard progress link (Screenshot 6)
+- [ ] No sensitive data exposed
 
 ---
 
