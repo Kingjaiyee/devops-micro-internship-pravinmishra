@@ -42,13 +42,13 @@ Create the `~/k8s-labs/autoscaling` working directory.
 
 **1. What is the difference between auto-healing and auto-scaling?**
 
-Add your answer here.
+Auto-healing puts back the number of Pods I asked for when one dies or is deleted. It never changes that number. Auto-scaling changes the number itself, up or down, based on load such as CPU use.
 
 ---
 
 **2. Which Kubernetes feature will you use for CPU-based auto-scaling?**
 
-Add your answer here.
+The HorizontalPodAutoscaler (HPA), `autoscaling/v2`, reading CPU usage from Metrics Server.
 
 ---
 
@@ -64,7 +64,7 @@ Create `demo-autohealing` (two replicas), delete one Pod, and confirm the desire
 
 ![Auto-healing](./screenshots/a4-s02-auto-healing.png)
 
-Manifest ([manifests/a4-autohealing-deployment.yaml](./manifests/a4-autohealing-deployment.yaml)):
+Manifest:
 
 ```yaml
 apiVersion: apps/v1
@@ -96,19 +96,21 @@ spec:
 
 **1. What happened after you deleted one Pod?**
 
-Add your answer here.
+`demo-autohealing-69b848f547-dhg79` was stopped. Within 4 seconds a new Pod, `demo-autohealing-69b848f547-6ztcm`, was created, and the Deployment was back at `2/2`.
 
 ---
 
 **2. What Kubernetes resource maintains the desired replica count for this Deployment?**
 
-Add your answer here.
+The ReplicaSet `demo-autohealing-69b848f547`, which the Deployment created and owns. The ReplicaSet controller is what noticed 1 Pod where it wanted 2 and created the replacement.
 
 ---
 
 **3. What proves that auto-healing worked?**
 
-Add your answer here.
+- The replacement has a new name and a later `creationTimestamp` than the surviving Pod.
+- The ReplicaSet events show a third `SuccessfulCreate` for `6ztcm`, right after the `Killing` event for `dhg79`.
+- `kubectl get deploy` showed `2/2` again.
 
 ---
 
@@ -124,7 +126,7 @@ Deploy `nginx-deployment` with CPU `requests: 100m` / `limits: 200m`, then enabl
 
 ![Resources and Metrics Server](./screenshots/a4-s03-resources-metrics-server.png)
 
-Manifest ([manifests/a4-hpa-deployment.yaml](./manifests/a4-hpa-deployment.yaml)):
+Manifest:
 
 ```yaml
 apiVersion: apps/v1
@@ -173,37 +175,37 @@ spec:
 
 **1. What does `cpu: "100m"` mean?**
 
-Add your answer here.
+100 millicores, which is 0.1 of one CPU core.
 
 ---
 
 **2. What is the difference between a CPU request and a CPU limit?**
 
-Add your answer here.
+The request is the amount of CPU the Pod is guaranteed. The scheduler uses it to decide which node has room, and the HPA uses it as the 100% mark. The limit is the most CPU the container may use. Above it, the container is throttled. In my load test, the busy Pod sat at 183m to 200m and never went past its 200m limit.
 
 ---
 
 **3. Why does CPU-based HPA require CPU requests?**
 
-Add your answer here.
+The HPA works in percent of request: utilization = CPU used / CPU requested. With no request there is nothing to divide by, so the HPA cannot produce a percentage and cannot decide whether to scale.
 
 ---
 
 **4. Why does HPA need Metrics Server?**
 
-Add your answer here.
+The HPA does not measure anything itself. It reads current CPU use from the `metrics.k8s.io` API, and Metrics Server provides that API by collecting usage from each kubelet.
 
 ---
 
 **5. What issue can occur if Metrics Server is not working?**
 
-Add your answer here.
+The HPA shows `<unknown>` in TARGETS and reports that it failed to get metrics, so it never scales. `kubectl top` also fails. Before I installed it, I saw exactly that: `Metrics API not available`.
 
 ---
 
 **6. What does `kubectl top pods` help you check?**
 
-Add your answer here.
+The live CPU and memory use of each Pod. It confirmed the metrics pipeline worked, and during the load test it showed which Pod was busy (one at 183m to 200m, the rest near 0m).
 
 ---
 
@@ -219,7 +221,7 @@ Create an HPA (imperatively via `kubectl autoscale` or declaratively via `autosc
 
 ![HPA get and describe](./screenshots/a4-s04-hpa-get-describe.png)
 
-Manifest ([manifests/a4-hpa-nginx.yaml](./manifests/a4-hpa-nginx.yaml)):
+Manifest:
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -250,25 +252,25 @@ spec:
 
 **1. What does `minReplicas: 2` mean?**
 
-Add your answer here.
+The HPA never goes below 2 Pods, even when they are idle. My Deployment stayed at 2 while CPU was at 0%.
 
 ---
 
 **2. What does `maxReplicas: 5` mean?**
 
-Add your answer here.
+The HPA never goes above 5 Pods, however high the CPU gets. That caps how much of the cluster this app can take.
 
 ---
 
 **3. What does `averageUtilization: 50` mean?**
 
-Add your answer here.
+The HPA aims to keep the average CPU across all the Pods at 50% of their request, which is 50m each here. Above that, it adds Pods. Below it, after a wait, it removes Pods.
 
 ---
 
 **4. Why should only one HPA manage a Deployment at a time?**
 
-Add your answer here.
+Each HPA works out its own replica count and writes it to the Deployment. Two HPAs would keep overwriting each other, and the Pod count would jump around. For example, the solution doc's imperative HPA (named `nginx-deployment`) would fight `nginx-hpa`. That is why I created only the declarative one.
 
 ---
 
@@ -296,19 +298,19 @@ Generate CPU load inside an NGINX Pod (`yes > /dev/null`) and monitor whether th
 
 **1. Did the HPA change the number of Pods? Explain what you observed.**
 
-Add your answer here.
+Yes. With one Pod pushed to its 200m limit, the HPA reported `100%/50%` and scaled `nginx-deployment` from 2 to 4 Pods. As the two new Pods joined, the average dropped to `61%`, then `48%`, and settled at `50%/50%` with 4 replicas. The event says `New size: 4; reason: cpu resource utilization (percentage of request) above target`.
 
 ---
 
 **2. If scaling did not happen, what are two possible reasons?**
 
-Add your answer here, or write “Not applicable — scaling occurred.”
+Not applicable. Scaling occurred, from 2 to 4 Pods.
 
 ---
 
 **3. Why is automatic scale-down useful after traffic decreases?**
 
-Add your answer here.
+Idle Pods still hold their CPU and memory requests on the nodes. Removing them frees that room for other work, and in the cloud it cuts cost. The 5-minute stabilization window means the HPA waits before removing Pods, so a short dip in traffic does not make it scale down and then straight back up.
 
 ---
 
@@ -328,11 +330,13 @@ Cleanup: I deleted the HPA and both Deployments with `kubectl delete -f` and con
 
 #### Screenshot 6 — Published LinkedIn post showing your name, the required explanation, and the attached Kubernetes screenshot
 
-Add your screenshot here.
+![LinkedIn post](./screenshots/a4-linkedin-post.png)
+
+*Victor Durojaiye*
 
 #### Linkedin Post Link
 
-Add your link here
+https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-kubernetes-devops-share-7518681703553409024-x7N4/
 
 ---
 
@@ -350,16 +354,16 @@ Add your link here
 
 # Completion Checklist
 
-- [ ] Task 0: Checked the active context and existing cluster resources
+- [x] Task 0: Checked the active context and existing cluster resources
 - [x] Task 1: Lab directory created (Screenshot 1)
 - [x] Task 2: Auto-healing observed (Screenshot 2)
 - [x] Task 3: HPA-ready Deployment applied and Metrics Server verified (Screenshot 3)
 - [x] Task 4: HPA created and inspected (Screenshot 4)
 - [x] Task 5: CPU load generated and scaling observed (Screenshot 5, optional)
 - [x] Reflection notes written (Notes)
-- [ ] Completed the Notes — Template Questions for Tasks 1–5
-- [ ] Published the LinkedIn post with the required explanation and attached screenshot (Screenshot 6)
-- [ ] No sensitive data exposed
+- [x] Completed the Notes — Template Questions for Tasks 1–5
+- [x] Published the LinkedIn post with the required explanation and attached screenshot (Screenshot 6)
+- [x] No sensitive data exposed
 
 ---
 

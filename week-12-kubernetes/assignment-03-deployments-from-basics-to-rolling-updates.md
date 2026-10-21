@@ -50,6 +50,32 @@ Create `nginx-deployment.yaml` with two replicas and image `nginx:1.21.1`, apply
 
 ![Deployment with two Pods](./screenshots/a3-s02-deployment-two-pods.png)
 
+Task 2 manifest:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21.1
+        ports:
+        - containerPort: 80
+```
+
 **Notes:** I checked the manifest with a server dry run, committed it (`3889eab`), applied it and waited for `rollout status`. The Deployment showed `2/2`, it created ReplicaSet `nginx-deployment-7ffcd96c66`, and that created two Pods. The ownerReferences confirm the chain: each Pod is owned by `ReplicaSet/nginx-deployment-7ffcd96c66`, which is owned by `Deployment/nginx-deployment`. I only created the Deployment. The hash in the ReplicaSet name stands for this version of the Pod template.
 
 ---
@@ -66,7 +92,7 @@ Add `strategy.rollingUpdate` with `maxSurge: 1` and `maxUnavailable: 0` to the D
 
 ![RollingUpdate strategy](./screenshots/a3-s03-rollingupdate-strategy.png)
 
-Completed manifest (also committed as [manifests/a3-nginx-deployment.yaml](./manifests/a3-nginx-deployment.yaml); the Task 2 version is [manifests/a3-nginx-deployment-basic.yaml](./manifests/a3-nginx-deployment-basic.yaml)):
+Completed manifest (Task 2 manifest plus the strategy block):
 
 ```yaml
 apiVersion: apps/v1
@@ -171,7 +197,9 @@ I also scaled my Deployment from two Pods to five and back to two!
 
 #### Screenshot 6 — Published WhatsApp Status showing your Kubernetes Deployment message and generated DMI leaderboard progress link
 
-Add your screenshot here.
+![WhatsApp Status](./screenshots/a3-s06-whatsapp-status.png)
+
+*Victor Durojaiye*
 
 A draft or editing screen is not sufficient.
 
@@ -199,15 +227,15 @@ Cleanup: I deleted the Deployment, which removed both ReplicaSets and the Pods, 
 
 # Completion Checklist
 
-- [ ] Completed Task 0
+- [x] Completed Task 0
 - [x] Task 1: Lab directory created (Screenshot 1)
 - [x] Task 2: Two-replica Deployment applied (Screenshot 2)
 - [x] Task 3: RollingUpdate strategy configured (Screenshot 3)
 - [x] Task 4: Image updated and rolled back (Screenshot 4)
 - [x] Task 5: Scaled up and down (Screenshot 5)
 - [x] Reflection notes written (Notes)
-- [ ] Task 6: Published the WhatsApp Status with the generated leaderboard progress link (Screenshot 6)
-- [ ] No sensitive data exposed
+- [x] Task 6: Published the WhatsApp Status with the generated leaderboard progress link (Screenshot 6)
+- [x] No sensitive data exposed
 
 ---
 

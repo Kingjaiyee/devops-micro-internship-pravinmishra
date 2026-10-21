@@ -54,7 +54,7 @@ Write `nginx-pod.yaml` (apiVersion `v1`, kind `Pod`, label `app: nginx`, contain
 
 ![Declarative pod running](./screenshots/a1-s03-declarative-pod-running.png)
 
-Manifest (also committed as [manifests/a1-nginx-pod.yaml](./manifests/a1-nginx-pod.yaml)):
+Manifest:
 
 ```yaml
 apiVersion: v1
@@ -134,7 +134,9 @@ I also checked its status, inspected its details, viewed its logs, and accessed 
 
 #### Screenshot 5 — Published WhatsApp Status showing your Kubernetes Pod message and generated DMI leaderboard progress link
 
-Add your screenshot here.
+![WhatsApp Status](./screenshots/a1-s05-whatsapp-status.png)
+
+*Victor Durojaiye*
 
 ---
 
@@ -155,8 +157,8 @@ Add your screenshot here.
 - [x] Task 3: Pod created declaratively and verified Running (Screenshot 3)
 - [x] Task 4: Pod inspected via describe/logs/exec (Screenshot 4)
 - [x] Understood the difference between imperative and declarative methods
-- [ ] Task 5: Published the WhatsApp Status (Screenshot 5)
-- [ ] No sensitive data exposed
+- [x] Task 5: Published the WhatsApp Status (Screenshot 5)
+- [x] No sensitive data exposed
 
 ---
 
