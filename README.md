@@ -3,7 +3,7 @@
 ![Cohort](https://img.shields.io/badge/Cohort-3-blue?style=for-the-badge)
 ![Program](https://img.shields.io/badge/DevOps_Micro_Internship-Pravin_Mishra-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
-![Weeks](https://img.shields.io/badge/Weeks_Completed-11%2F14-green?style=for-the-badge)
+![Weeks](https://img.shields.io/badge/Weeks_Completed-12%2F14-green?style=for-the-badge)
 
 > 👋 **New here?** Read the [submission instructions](./onboarding) first — how to fork, fill in, and submit your assignments.
 > Find all the required links & assignment guidelines from here [Required links](./dmi_cohort3_resources.md)
@@ -104,7 +104,7 @@ This is not a course. It is an internship-style program — real deployments, re
 [![Week 11 – Docker](./badges/week-11.svg)](./week-11-docker/)
 
 <!-- Week 12 → Kubernetes -->
-<!-- [![Week 12 – K8s](./badges/week-12.svg)](./week-12-kubernetes/) -->
+[![Week 12 – K8s](./badges/week-12.svg)](./week-12-kubernetes/)
 
 <!-- Week 13 → Final Project / Capstone -->
 <!-- [![Week 13 – Capstone](./badges/week-13.svg)](./week-13-final-project/) -->
@@ -142,7 +142,7 @@ This is not a course. It is an internship-style program — real deployments, re
 | 09 | Ansible | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7511552629177503744/) | [Blog Post](https://www.linkedin.com/pulse/i-taught-ansible-run-my-servers-built-ai-isnt-allowed-durojaiye-kwuwe) |
 | 10 | Azure DevOps (CI/CD) | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-azuredevops-claudecode-share-7513693984439947265-_HIG/) | [Blog Post](https://www.linkedin.com/pulse/i-gave-my-pipelines-own-server-five-assignments-ai-can-durojaiye-cpiie) |
 | 11 | Docker | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-docker-dockercompose-share-7516996166220181504-AMrC/) | [Blog Post](https://www.linkedin.com/pulse/eight-docker-assignments-checks-caught-me-out-victor-durojaiye-obtue) |
-| 12 | Kubernetes | ⬜ Not Started | ⏳ Pending | — | — |
+| 12 | Kubernetes | ✅ Completed | ✅ Solved | [LinkedIn Post](https://www.linkedin.com/posts/victor-jaiye_devopsmicrointernship-kubernetes-aks-ugcPost-7519532101717725184-jYXg/) | [Blog Post](https://www.linkedin.com/pulse/from-one-pod-ai-assisted-incident-kubernetes-victor-durojaiye-bxqje) |
 | 13 | Final Project | ⬜ Not Started | ⏳ Pending | — | — |
 
 **Status:** ⬜ Not Started &nbsp;|&nbsp; 🔄 In Progress &nbsp;|&nbsp; ✅ Completed<br>
